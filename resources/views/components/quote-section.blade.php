@@ -18,7 +18,7 @@
 >
     <div class="absolute inset-0 bg-navy-brand/80"></div>
     <div class="relative z-10 max-w-4xl px-6 text-center">
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-6">
+        <h2 class="text-white text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
             "{{ $quote }}"
         </h2>
         <div class="h-1 w-20 bg-primary mx-auto"></div>

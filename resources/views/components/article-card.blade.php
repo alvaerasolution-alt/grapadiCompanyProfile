@@ -32,13 +32,13 @@
     </div>
     <div class="p-5 flex flex-col flex-grow">
         <a href="{{ $link }}">
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white line-clamp-2 hover:text-primary transition">
+            <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-white line-clamp-2 hover:text-primary transition">
                 {{ $title }}
             </h3>
         </a>
         
         @if($excerpt)
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 flex-grow">
+        <p class="text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 flex-grow">
             {{ $excerpt }}
         </p>
         @endif

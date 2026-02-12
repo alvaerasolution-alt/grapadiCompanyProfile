@@ -33,19 +33,19 @@
                 @endif
                 
                 @if($title)
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-gray-900 dark:text-white mb-2">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-gray-900 dark:text-white mb-2">
                     {{ $title }}
                 </h2>
                 @endif
                 
                 @if($highlightedTitle)
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-primary mb-6">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-primary mb-6">
                     {{ $highlightedTitle }}
                 </h2>
                 @endif
                 
                 @if($description)
-                <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-lg mx-auto lg:mx-0">
+                <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-lg mx-auto lg:mx-0 text-lg lg:text-xl">
                     {{ $description }}
                 </p>
                 @endif
@@ -58,13 +58,13 @@
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     @if($primaryButtonText)
-                    <a href="{{ $primaryButtonUrl }}" class="bg-primary hover:bg-primary-800 text-white font-bold py-3 px-8 rounded transition shadow-lg inline-flex items-center justify-center gap-2">
+                    <a href="{{ $primaryButtonUrl }}" class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-10 rounded transition shadow-lg inline-flex items-center justify-center gap-2">
                         {{ $primaryButtonText }}
                     </a>
                     @endif
                     
                     @if($secondaryButtonText)
-                    <a href="{{ $secondaryButtonUrl }}" class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded transition inline-flex items-center justify-center gap-2">
+                    <a href="{{ $secondaryButtonUrl }}" class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-4 px-10 rounded transition inline-flex items-center justify-center gap-2">
                         {{ $secondaryButtonText }}
                     </a>
                     @endif

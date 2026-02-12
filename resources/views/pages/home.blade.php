@@ -34,10 +34,10 @@
                 <div class="absolute inset-0 bg-navy-brand/0"></div>
             </div>
             <div class="order-1 lg:order-1" data-animate="fade-in-left">
-                <h3 class="text-xl font-bold text-gray-600 dark:text-gray-400 mb-2">
+                <h3 class="text-xl lg:text-3xl font-bold text-gray-600 dark:text-gray-400 mb-2">
                     {{ $director['title'] }}
                 </h3>
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-navy-brand dark:text-white mb-4">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-navy-brand dark:text-white mb-4">
                     {{ $director['name'] }}
                 </h2>
                 
@@ -51,7 +51,7 @@
                 </div>
                 @endif
                 
-                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg">
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg lg:text-xl">
                     {{ $director['description'] }}
                 </p>
             </div>
@@ -63,7 +63,7 @@
     <section class="py-20 bg-surface-light dark:bg-background-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 max-w-3xl mx-auto" data-animate="fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-4">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-gray-900 dark:text-white mb-4">
                     {{ $servicesSection['title'] }}
                 </h2>
             </div>
@@ -134,7 +134,7 @@
     <section class="py-20 bg-surface-light dark:bg-surface-dark">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16" data-animate="fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-gray-900 dark:text-white">
                     {{ $insightsSection['title'] }}
                 </h2>
             </div>
