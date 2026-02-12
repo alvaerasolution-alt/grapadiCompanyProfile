@@ -195,6 +195,45 @@
         </div>
     </section>
 
+    {{-- FAQ Section --}}
+    @if($faqs->count() > 0)
+    <section class="bg-white dark:bg-background-dark py-16 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12" data-animate="fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-navy-brand dark:text-white mb-4">
+                    Pertanyaan yang Sering Diajukan
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Temukan jawaban untuk pertanyaan umum tentang layanan kami
+                </p>
+            </div>
+
+            <div class="space-y-4" data-animate="fade-in-up" data-delay="200">
+                @foreach($faqs as $index => $faq)
+                <div x-data="{ open: {{ $index === 0 ? 'true' : 'false' }} }" class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+                    <button 
+                        @click="open = !open" 
+                        class="w-full flex items-center justify-between px-6 py-4 text-left bg-gray-50 dark:bg-surface-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                        <span class="font-semibold text-gray-800 dark:text-white pr-4">{{ $faq->question }}</span>
+                        <span class="material-icons-outlined text-primary flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180': open }">
+                            expand_more
+                        </span>
+                    </button>
+                    <div 
+                        x-show="open" 
+                        x-collapse
+                        class="px-6 py-4 bg-white dark:bg-background-dark"
+                    >
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{{ $faq->answer }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
     {{-- CTA Section --}}
     <x-cta-section 
         :title="$aboutCta['title']"

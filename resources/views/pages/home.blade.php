@@ -145,7 +145,7 @@
                     :title="$article->title"
                     :image="$article->image_display"
                     :date="$article->created_at->format('F d, Y')"
-                    :link="'/blog/' . $article->slug"
+                    :link="route('blog.show', $article->slug)"
                 />
                 </div>
                 @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Brand;
 use App\Models\ExecutiveTeam;
+use App\Models\Faq;
 use App\Models\Portfolio;
 use App\Models\Service;
 use App\Models\SiteSetting;
@@ -244,6 +245,9 @@ class PageController extends Controller
             'items' => $solutionsItems,
         ];
 
+        // Get FAQs
+        $faqs = Faq::active()->ordered()->get();
+
         return view('pages.about', compact(
             'executiveTeam',
             'aboutHero',
@@ -253,7 +257,8 @@ class PageController extends Controller
             'aboutWhatWeDo',
             'aboutVision',
             'aboutMission',
-            'aboutSolutions'
+            'aboutSolutions',
+            'faqs'
         ));
     }
 

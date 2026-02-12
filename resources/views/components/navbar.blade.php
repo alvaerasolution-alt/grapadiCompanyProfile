@@ -84,20 +84,39 @@ $logoOnly = site_setting('site_logo_only', false);
                     >
                         Home
                     </a>
-                    <a 
-                        :class="isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-600 dark:text-gray-300 hover:text-primary'"
-                        class="flex items-center gap-1 transition-colors duration-300 {{ $currentRoute == 'about' ? 'font-semibold' : '' }}" 
-                        href="{{ url('/about') }}"
-                    >
-                        About
-                    </a>
-                    <a 
-                        :class="isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-600 dark:text-gray-300 hover:text-primary'"
-                        class="flex items-center gap-1 transition-colors duration-300 {{ $currentRoute == 'timeline' ? 'font-semibold' : '' }}" 
-                        href="{{ url('/timeline') }}"
-                    >
-                        Timeline
-                    </a>
+                    <div x-data="{ aboutOpen: false }" @mouseenter="aboutOpen = true" @mouseleave="aboutOpen = false" class="relative">
+                        <button 
+                            :class="isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-600 dark:text-gray-300 hover:text-primary'"
+                            class="flex items-center gap-1 transition-colors duration-300 {{ in_array($currentRoute, ['about', 'timeline']) ? 'font-semibold' : '' }}" 
+                        >
+                            About
+                            <span class="material-icons-outlined text-sm transition-transform duration-200" :class="aboutOpen ? 'rotate-180' : ''">expand_more</span>
+                        </button>
+                        <div 
+                            x-show="aboutOpen"
+                            x-transition:enter="transition ease-out duration-150"
+                            x-transition:enter-start="opacity-0 -translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-1"
+                            class="absolute left-0 mt-2 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 z-50"
+                            x-cloak
+                        >
+                            <a 
+                                class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == 'about' ? 'font-semibold text-primary' : '' }}" 
+                                href="{{ url('/about') }}"
+                            >
+                                About Us
+                            </a>
+                            <a 
+                                class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == 'timeline' ? 'font-semibold text-primary' : '' }}" 
+                                href="{{ url('/timeline') }}"
+                            >
+                                Timeline
+                            </a>
+                        </div>
+                    </div>
                     <a 
                         :class="isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-600 dark:text-gray-300 hover:text-primary'"
                         class="flex items-center gap-1 transition-colors duration-300 {{ str_starts_with($currentRoute, 'services') ? 'font-semibold' : '' }}" 
@@ -118,6 +137,14 @@ $logoOnly = site_setting('site_logo_only', false);
                         href="{{ url('/blog') }}"
                     >
                         Blog
+                    </a>
+                    <a 
+                        :class="isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-600 dark:text-gray-300 hover:text-primary'"
+                        class="flex items-center gap-1 transition-colors duration-300" 
+                        href="https://strategix.grapadikonsultan.co.id"
+                        target="_blank"
+                    >
+                        Strategix
                     </a>
                 </div>
             </div>
@@ -183,18 +210,26 @@ $logoOnly = site_setting('site_logo_only', false);
                     Home
                 </span>
             </a>
-            <a class="block py-3 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == 'about' ? 'bg-primary/10 text-primary font-semibold' : '' }}" href="{{ url('/about') }}">
-                <span class="flex items-center gap-3">
-                    <span class="material-icons-outlined text-xl">info</span>
-                    About
-                </span>
-            </a>
-            <a class="block py-3 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == 'timeline' ? 'bg-primary/10 text-primary font-semibold' : '' }}" href="{{ url('/timeline') }}">
-                <span class="flex items-center gap-3">
-                    <span class="material-icons-outlined text-xl">timeline</span>
-                    Timeline
-                </span>
-            </a>
+            <div x-data="{ aboutMobileOpen: false }">
+                <button 
+                    @click="aboutMobileOpen = !aboutMobileOpen"
+                    class="block w-full py-3 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ in_array($currentRoute, ['about', 'timeline']) ? 'bg-primary/10 text-primary font-semibold' : '' }}"
+                >
+                    <span class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-xl">info</span>
+                        About
+                        <span class="material-icons-outlined text-sm ml-auto transition-transform duration-200" :class="aboutMobileOpen ? 'rotate-180' : ''">expand_more</span>
+                    </span>
+                </button>
+                <div x-show="aboutMobileOpen" x-collapse x-cloak class="pl-10 space-y-1 mt-1">
+                    <a class="block py-2 px-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == 'about' ? 'text-primary font-semibold' : '' }}" href="{{ url('/about') }}">
+                        About Us
+                    </a>
+                    <a class="block py-2 px-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == 'timeline' ? 'text-primary font-semibold' : '' }}" href="{{ url('/timeline') }}">
+                        Timeline
+                    </a>
+                </div>
+            </div>
             <a class="block py-3 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ str_starts_with($currentRoute, 'services') ? 'bg-primary/10 text-primary font-semibold' : '' }}" href="{{ url('/services') }}">
                 <span class="flex items-center gap-3">
                     <span class="material-icons-outlined text-xl">design_services</span>
@@ -211,6 +246,11 @@ $logoOnly = site_setting('site_logo_only', false);
                 <span class="flex items-center gap-3">
                     <span class="material-icons-outlined text-xl">article</span>
                     Blog
+                </span>
+            </a>
+            <a class="block py-3 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="https://strategix.grapadikonsultan.co.id" target="_blank">
+                <span class="flex items-center gap-3">
+                    Strategix
                 </span>
             </a>
             <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700 space-y-3">

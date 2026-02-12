@@ -23,7 +23,6 @@ Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio'
 
 // Blog page
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
-Route::get('/blog/{slug}', [PageController::class, 'articleDetail'])->name('blog.show');
 
 // Contact page
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
@@ -53,8 +52,8 @@ Route::get('/sitemap-services.xml', [\App\Http\Controllers\SitemapController::cl
 Route::get('/robots.txt', function () {
     $content = "User-agent: *\n";
     $content .= "Allow: /\n";
-    $content .= "Disallow: /admin\n";
-    $content .= "Disallow: /admin/*\n\n";
+    $content .= "Disallow: /gp-strategix\n";
+    $content .= "Disallow: /gp-strategix/*\n\n";
     $content .= "Sitemap: " . url('/sitemap.xml') . "\n";
     
     return response($content, 200)->header('Content-Type', 'text/plain');
@@ -63,4 +62,7 @@ Route::get('/robots.txt', function () {
 // Newsletter subscription
 Route::post('/newsletter/subscribe', [\App\Http\Controllers\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/newsletter/unsubscribe', [\App\Http\Controllers\NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
+// Blog article detail (catch-all, must be LAST route)
+Route::get('/{slug}', [PageController::class, 'articleDetail'])->name('blog.show');
 

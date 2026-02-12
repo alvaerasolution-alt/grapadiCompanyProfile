@@ -8,6 +8,64 @@
 /* Enable class-based dark mode toggling */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ============================================
+   GLOBAL SCALING - Make everything slightly smaller
+   ============================================ */
+html {
+    font-size: 87.5%;
+    /* Base: 14px instead of 16px - scales all rem values */
+}
+
+@media (min-width: 1280px) {
+    html {
+        font-size: 90%;
+        /* Slightly larger on xl screens: 14.4px */
+    }
+}
+
+@media (min-width: 1536px) {
+    html {
+        font-size: 93.75%;
+        /* Restore closer to normal on 2xl screens: 15px */
+    }
+}
+
+/* Reduce container padding for a more compact feel */
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* Slightly tighter line heights for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
+}
+
+/* Compact spacing utilities */
+.section-compact {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .section-compact {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
 @theme {
     --font-sans: 'MuseoModerno', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
@@ -258,12 +316,29 @@
     color: #f9fafb;
 }
 
-#article-content h1 { font-size: 2.25rem; }
-#article-content h2 { font-size: 1.875rem; }
-#article-content h3 { font-size: 1.5rem; }
-#article-content h4 { font-size: 1.25rem; }
-#article-content h5 { font-size: 1.125rem; }
-#article-content h6 { font-size: 1rem; }
+#article-content h1 {
+    font-size: 2.25rem;
+}
+
+#article-content h2 {
+    font-size: 1.875rem;
+}
+
+#article-content h3 {
+    font-size: 1.5rem;
+}
+
+#article-content h4 {
+    font-size: 1.25rem;
+}
+
+#article-content h5 {
+    font-size: 1.125rem;
+}
+
+#article-content h6 {
+    font-size: 1rem;
+}
 
 /* Paragraphs */
 #article-content p {
@@ -320,8 +395,8 @@
 }
 
 /* Nested lists */
-#article-content li > ul,
-#article-content li > ol {
+#article-content li>ul,
+#article-content li>ol {
     margin-top: 0.5em;
 }
 

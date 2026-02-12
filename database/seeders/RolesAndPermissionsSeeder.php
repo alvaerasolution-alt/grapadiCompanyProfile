@@ -28,10 +28,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'executive-team',
             'interaction',
             'lead',
-            'permission',
             'portfolio',
             'project',
-            'role',
             'service',
             'tag',
             'user',
@@ -61,51 +59,17 @@ class RolesAndPermissionsSeeder extends Seeder
             Permission::firstOrCreate(['name' => $permissionName, 'guard_name' => 'web']);
         }
 
-        // Create roles
+        // Create roles - Only 2 roles: super_admin and admin
         // Super Admin - has all permissions
         $superAdminRole = Role::firstOrCreate(['name' => 'super_admin', 'guard_name' => 'web']);
         $superAdminRole->syncPermissions($allPermissions);
 
-        // Admin - most permissions except permission/role management
+        // Admin - has all permissions except user management
         $adminPermissions = array_filter($allPermissions, function($perm) {
-            return !str_contains($perm, '_permission') && !str_contains($perm, '_role');
+            return !str_contains($perm, '_user');
         });
         $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
         $adminRole->syncPermissions($adminPermissions);
-
-        // Content Manager - can manage content resources
-        $contentResources = ['article', 'brand', 'category', 'portfolio', 'service', 'tag', 'company-timeline', 'executive-team'];
-        $contentPermissions = [];
-        foreach ($contentResources as $resource) {
-            foreach ($actions as $action) {
-                $contentPermissions[] = "{$action}_{$resource}";
-            }
-        }
-        $contentPermissions[] = 'view_dashboard';
-        $contentManagerRole = Role::firstOrCreate(['name' => 'content_manager', 'guard_name' => 'web']);
-        $contentManagerRole->syncPermissions($contentPermissions);
-
-        // Sales/CRM - can manage clients, leads, interactions, projects
-        $crmResources = ['client', 'lead', 'interaction', 'project'];
-        $crmPermissions = [];
-        foreach ($crmResources as $resource) {
-            foreach ($actions as $action) {
-                $crmPermissions[] = "{$action}_{$resource}";
-            }
-        }
-        $crmPermissions[] = 'view_dashboard';
-        $salesRole = Role::firstOrCreate(['name' => 'sales', 'guard_name' => 'web']);
-        $salesRole->syncPermissions($crmPermissions);
-
-        // Viewer - view only permissions
-        $viewerPermissions = [];
-        foreach ($resources as $resource) {
-            $viewerPermissions[] = "view_{$resource}";
-            $viewerPermissions[] = "view_any_{$resource}";
-        }
-        $viewerPermissions[] = 'view_dashboard';
-        $viewerRole = Role::firstOrCreate(['name' => 'viewer', 'guard_name' => 'web']);
-        $viewerRole->syncPermissions($viewerPermissions);
 
         // Create default users
         // Super Admin
@@ -130,37 +94,12 @@ class RolesAndPermissionsSeeder extends Seeder
         );
         $admin->syncRoles(['admin']);
 
-        // Content Manager
-        $contentManager = User::firstOrCreate(
-            ['email' => 'content@grapadi.com'],
-            [
-                'name' => 'Content Manager',
-                'password' => Hash::make('password123'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $contentManager->syncRoles(['content_manager']);
-
-        // Sales
-        $sales = User::firstOrCreate(
-            ['email' => 'sales@grapadi.com'],
-            [
-                'name' => 'Sales Team',
-                'password' => Hash::make('password123'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $sales->syncRoles(['sales']);
-
         $this->command->info('Permissions and Roles seeded successfully!');
         $this->command->table(
             ['Role', 'Permissions Count'],
             [
                 ['super_admin', count($allPermissions)],
                 ['admin', count($adminPermissions)],
-                ['content_manager', count($contentPermissions)],
-                ['sales', count($crmPermissions)],
-                ['viewer', count($viewerPermissions)],
             ]
         );
         $this->command->info('Default users created:');
@@ -169,8 +108,6 @@ class RolesAndPermissionsSeeder extends Seeder
             [
                 ['superadmin@grapadi.com', 'super_admin', 'password123'],
                 ['admin@grapadi.com', 'admin', 'password123'],
-                ['content@grapadi.com', 'content_manager', 'password123'],
-                ['sales@grapadi.com', 'sales', 'password123'],
             ]
         );
     }
