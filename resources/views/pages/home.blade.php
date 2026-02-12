@@ -51,7 +51,7 @@
                 </div>
                 @endif
                 
-                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg">
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-xl">
                     {{ $director['description'] }}
                 </p>
             </div>
@@ -88,7 +88,7 @@
                         {{ $servicesSection['cta_title'] }}
                     </h3>
                     <div class="flex flex-col sm:flex-row gap-3 relative z-10">
-                        <a class="bg-white text-primary font-bold py-3 px-6 rounded inline-flex items-center gap-2 hover:bg-gray-100 transition" href="{{ $servicesSection['cta_url'] }}">
+                        <a class="bg-white text-primary font-bold py-3 px-6 rounded inline-flex items-center gap-2 hover:bg-gray-100 transition text-lg" href="{{ $servicesSection['cta_url'] }}">
                             {{ $servicesSection['cta_text'] }}
                             <span class="material-icons-outlined">arrow_forward</span>
                         </a>

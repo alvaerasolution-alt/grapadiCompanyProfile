@@ -41,7 +41,7 @@
 
             @if($ctaText)
             <div class="flex justify-center">
-                <a class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-10 rounded flex items-center gap-2 transition shadow-lg text-lg mb-8" href="{{ $ctaUrl }}">
+                <a class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-10 rounded flex items-center gap-2 transition shadow-lg text-xl mb-8" href="{{ $ctaUrl }}">
                     {{ $ctaText }}
                     <span class="material-icons-outlined">arrow_forward</span>
                 </a>
@@ -56,9 +56,9 @@
             @foreach($stats as $stat)
             <div class="flex flex-col items-center">
                 @if(isset($stat['icon']))
-                <span class="material-icons-outlined text-4xl mb-3 text-white/80">{{ $stat['icon'] }}</span>
+                <span class="material-icons-outlined text-5xl mb-3 text-white/80">{{ $stat['icon'] }}</span>
                 @endif
-                <p class="text-sm text-gray-300">{!! $stat['label'] !!}</p>
+                <p class="text-base text-gray-300">{!! $stat['label'] !!}</p>
             </div>
             @endforeach
         </div>
@@ -70,7 +70,7 @@
     @if($showClientLogos)
     <div class="w-full py-8 border-t border-gray-700/50">
         @if($clientLogosTitle)
-        <p class="text-center text-sm text-gray-400 mb-6 uppercase tracking-wider">{{ $clientLogosTitle }}</p>
+        <p class="text-center text-base text-gray-400 mb-6 uppercase tracking-wider">{{ $clientLogosTitle }}</p>
         @endif
         
         {{-- Row 1 - Scroll Left --}}
@@ -97,7 +97,7 @@
         
         {{-- Row 2 - Scroll Right --}}
         @if($clientLogosTitle2)
-        <p class="text-center text-sm text-gray-400 mb-4 mt-6 uppercase tracking-wider">{{ $clientLogosTitle2 }}</p>
+        <p class="text-center text-base text-gray-400 mb-4 mt-6 uppercase tracking-wider">{{ $clientLogosTitle2 }}</p>
         @endif
         <div class="relative overflow-hidden">
             <div class="flex animate-scroll-hero-reverse">

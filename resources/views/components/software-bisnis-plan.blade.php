@@ -27,44 +27,44 @@
             {{-- Text Content --}}
             <div class="text-center lg:text-left">
                 @if($tagline)
-                <p class="text-gray-600 dark:text-gray-400 mb-2 font-medium">
+                <p class="text-gray-600 dark:text-gray-400 mb-2 font-medium text-lg">
                     {{ $tagline }}
                 </p>
                 @endif
                 
                 @if($title)
-                <h2 class="text-3xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mb-2">
+                <h2 class="text-4xl md:text-6xl font-bold font-display text-gray-900 dark:text-white mb-2">
                     {{ $title }}
                 </h2>
                 @endif
                 
                 @if($highlightedTitle)
-                <h2 class="text-3xl md:text-5xl font-bold font-display text-primary mb-6">
+                <h2 class="text-4xl md:text-6xl font-bold font-display text-primary mb-6">
                     {{ $highlightedTitle }}
                 </h2>
                 @endif
                 
                 @if($description)
-                <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-lg mx-auto lg:mx-0 text-lg lg:text-xl">
+                <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-lg mx-auto lg:mx-0 text-xl lg:text-2xl">
                     {{ $description }}
                 </p>
                 @endif
                 
                 @if($callout)
-                <p class="text-gray-800 dark:text-gray-200 font-semibold mb-8">
+                <p class="text-gray-800 dark:text-gray-200 font-semibold mb-8 text-lg">
                     {{ $callout }}
                 </p>
                 @endif
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     @if($primaryButtonText)
-                    <a href="{{ $primaryButtonUrl }}" class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-10 rounded transition shadow-lg inline-flex items-center justify-center gap-2">
+                    <a href="{{ $primaryButtonUrl }}" class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-10 rounded transition shadow-lg inline-flex items-center justify-center gap-2 text-lg">
                         {{ $primaryButtonText }}
                     </a>
                     @endif
                     
                     @if($secondaryButtonText)
-                    <a href="{{ $secondaryButtonUrl }}" class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-4 px-10 rounded transition inline-flex items-center justify-center gap-2">
+                    <a href="{{ $secondaryButtonUrl }}" class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-4 px-10 rounded transition inline-flex items-center justify-center gap-2 text-lg">
                         {{ $secondaryButtonText }}
                     </a>
                     @endif

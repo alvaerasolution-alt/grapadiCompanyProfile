@@ -22,32 +22,32 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
         @if($category)
         @if($categorySlug)
-        <a href="{{ route('blog', ['category' => $categorySlug]) }}" class="absolute top-3 left-3 bg-primary hover:bg-primary-800 text-white text-xs font-bold px-2 py-1 rounded transition">
+        <a href="{{ route('blog', ['category' => $categorySlug]) }}" class="absolute top-3 left-3 bg-primary hover:bg-primary-800 text-white text-sm font-bold px-2 py-1 rounded transition">
             {{ $category }}
         </a>
         @else
-        <span class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">{{ $category }}</span>
+        <span class="absolute top-3 left-3 bg-primary text-white text-sm font-bold px-2 py-1 rounded">{{ $category }}</span>
         @endif
         @endif
     </div>
     <div class="p-5 flex flex-col flex-grow">
         <a href="{{ $link }}">
-            <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-white line-clamp-2 hover:text-primary transition">
+            <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white line-clamp-2 hover:text-primary transition">
                 {{ $title }}
             </h3>
         </a>
         
         @if($excerpt)
-        <p class="text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 flex-grow">
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 flex-grow">
             {{ $excerpt }}
         </p>
         @endif
 
-        <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
+        <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
             <div class="flex items-center gap-3">
                 @if($date)
                 <span class="flex items-center gap-1">
-                    <span class="material-icons-outlined text-sm">calendar_today</span>
+                    <span class="material-icons-outlined text-base">calendar_today</span>
                     {{ $date }}
                 </span>
                 @endif
@@ -55,13 +55,13 @@
             <div class="flex items-center gap-3">
                 @if($readingTime)
                 <span class="flex items-center gap-1">
-                    <span class="material-icons-outlined text-sm">schedule</span>
+                    <span class="material-icons-outlined text-base">schedule</span>
                     {{ $readingTime }} min
                 </span>
                 @endif
                 @if($viewsCount !== null && $viewsCount > 0)
                 <span class="flex items-center gap-1">
-                    <span class="material-icons-outlined text-sm">visibility</span>
+                    <span class="material-icons-outlined text-base">visibility</span>
                     {{ number_format($viewsCount) }}
                 </span>
                 @endif
