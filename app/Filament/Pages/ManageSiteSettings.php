@@ -98,6 +98,9 @@ class ManageSiteSettings extends Page implements HasForms
             // Insights Section
             'insights_title' => SiteSetting::get('insights_title', 'Discover Our Latest Market Intelligence & Industry Insights'),
             
+            // Client Logos Section
+            'logo_scroll_speed' => SiteSetting::get('logo_scroll_speed', 5),
+            
             // CTA Section (Homepage)
             'cta_title' => SiteSetting::get('cta_title', 'Ready to Transform Your Business?'),
             'cta_description' => SiteSetting::get('cta_description', "Whether you're looking for insights to grow your business or a career to grow your potential, we want to hear from you."),
@@ -460,6 +463,21 @@ class ManageSiteSettings extends Page implements HasForms
                                             ->label('Judul Section')
                                             ->placeholder('Discover Our Latest Market Intelligence & Industry Insights')
                                             ->maxLength(500),
+                                    ])
+                                    ->collapsible(),
+
+                                // Client Logos Section
+                                Forms\Components\Section::make('Client Logos Section')
+                                    ->description('Pengaturan section logo klien/partner')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('logo_scroll_speed')
+                                            ->label('Kecepatan Scroll Logo (Detik)')
+                                            ->helperText('Semakin kecil angka, semakin cepat. Default: 5 detik.')
+                                            ->numeric()
+                                            ->minValue(1)
+                                            ->maxValue(60)
+                                            ->default(5)
+                                            ->suffix('detik'),
                                     ])
                                     ->collapsible(),
 

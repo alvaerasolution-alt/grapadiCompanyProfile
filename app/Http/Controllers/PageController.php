@@ -107,7 +107,11 @@ class PageController extends Controller
             'secondary_url' => SiteSetting::get('cta_secondary_url', '/about'),
         ];
 
+        // Get Client Logos settings
+        $logoScrollSpeed = SiteSetting::get('logo_scroll_speed', 5);
+
         return view('pages.home', compact(
+            'logoScrollSpeed',
             'services', 
             'articles', 
             'executiveTeam', 

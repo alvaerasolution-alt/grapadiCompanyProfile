@@ -116,8 +116,9 @@
     @endif
 
     {{-- Client Logos --}}
-    <x-client-logos title="Trusted By" :brands="$trustedBrands" />
-    <x-client-logos title="Media Covered" :brands="$mediaBrands" direction="static" />
+    {{-- Client Logos --}}
+    <x-client-logos title="Trusted By" :brands="$trustedBrands" :speed="$logoScrollSpeed" />
+    <x-client-logos title="Media Covered" :brands="$mediaBrands" direction="static" :speed="$logoScrollSpeed" />
     
     {{-- Quote Section --}}
     @php
