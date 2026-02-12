@@ -49,7 +49,7 @@ $logoOnly = site_setting('site_logo_only', false);
                     @if(!$logoOnly)
                     <span 
                         :class="isTransparent ? 'text-white' : 'text-gray-900 dark:text-white'"
-                        class="font-bold text-3xl font-display transition-colors duration-300"
+                        class="font-bold text-xl md:text-3xl font-display transition-colors duration-300"
                     >
                         {{ $companyName }}
                     </span>
@@ -203,7 +203,7 @@ $logoOnly = site_setting('site_logo_only', false);
         class="md:hidden"
         x-cloak
     >
-        <div class="px-4 pt-2 pb-4 space-y-1 bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 shadow-lg text-lg">
+        <div class="px-4 pt-2 pb-4 space-y-1 bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 shadow-lg text-base">
             <a class="block py-3 px-3 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors {{ $currentRoute == '/' ? 'bg-primary/10 text-primary font-semibold' : '' }}" href="{{ url('/') }}">
                 <span class="flex items-center gap-3">
                     <span class="material-icons-outlined text-xl">home</span>
