@@ -43,19 +43,21 @@
                         @php $logoUrl = $getLogoUrl($brand); @endphp
                         @if($logoUrl)
                             @if($brand->url)
-                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="block">
+                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-40 h-24">
                                     <img 
                                         alt="{{ $brand->name }}" 
-                                        class="h-8 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                         src="{{ $logoUrl }}"
                                     >
                                 </a>
                             @else
-                                <img 
-                                    alt="{{ $brand->name }}" 
-                                    class="h-8 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                    src="{{ $logoUrl }}"
-                                >
+                                <div class="flex items-center justify-center w-40 h-24">
+                                    <img 
+                                        alt="{{ $brand->name }}" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        src="{{ $logoUrl }}"
+                                    >
+                                </div>
                             @endif
                         @endif
                     @endforeach
@@ -77,19 +79,21 @@
                         @php $logoUrl = $getLogoUrl($brand); @endphp
                         @if($logoUrl)
                             @if($brand->url)
-                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="block">
+                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-40 h-24">
                                     <img 
                                         alt="{{ $brand->name }}" 
-                                        class="h-8 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                         src="{{ $logoUrl }}"
                                     >
                                 </a>
                             @else
-                                <img 
-                                    alt="{{ $brand->name }}" 
-                                    class="h-8 object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                    src="{{ $logoUrl }}"
-                                >
+                                <div class="flex items-center justify-center w-40 h-24">
+                                    <img 
+                                        alt="{{ $brand->name }}" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        src="{{ $logoUrl }}"
+                                    >
+                                </div>
                             @endif
                         @endif
                     @endforeach
