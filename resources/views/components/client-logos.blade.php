@@ -35,8 +35,8 @@
     <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-8 uppercase tracking-wider font-medium">{{ $title }}</p>
     @endif
     
-    <div class="relative">
-        <div class="flex {{ $direction === 'right' ? 'animate-scroll-reverse' : 'animate-scroll' }}">
+    <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }}">
+        <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center' : ($direction === 'right' ? 'animate-scroll-reverse' : 'animate-scroll') }}">
             {{-- First set --}}
             <div class="flex items-center gap-16 px-8 shrink-0">
                 @if($hasBrands)
@@ -73,7 +73,8 @@
                 @endif
             </div>
             
-            {{-- Duplicate for seamless scroll --}}
+            {{-- Duplicate for seamless scroll (hidden when static) --}}
+            @if($direction !== 'static')
             <div class="flex items-center gap-16 px-8 shrink-0">
                 @if($hasBrands)
                     @foreach($brands as $brand)
@@ -108,6 +109,7 @@
                     @endforeach
                 @endif
             </div>
+            @endif
         </div>
     </div>
 </div>
