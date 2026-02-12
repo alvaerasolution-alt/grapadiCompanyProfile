@@ -94,9 +94,15 @@ $copyrightText = str_replace(['{year}', '{company}'], [date('Y'), strtoupper($co
             </div>
         </div>
 
-        {{-- Bottom Section: Copyright --}}
-        <div class="border-t border-gray-800 pt-8 text-center">
-            <p class="text-gray-600 text-xs">
+        {{-- Bottom Section: Watermark & Copyright --}}
+        <div class="border-t border-gray-800 pt-8">
+            {{-- Watermark --}}
+            <div class="overflow-hidden select-none pointer-events-none mb-4">
+                <span class="text-6xl md:text-8xl lg:text-9xl font-black tracking-widest text-gray-800/30 uppercase font-display">
+                    GRAPADI
+                </span>
+            </div>
+            <p class="text-gray-600 text-xs text-center lg:text-left">
                 {{ $copyrightText }}
             </p>
         </div>

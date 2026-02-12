@@ -12,7 +12,7 @@
     'clientLogosTitle2' => 'Our Technology Partners'
 ])
 
-<section class="relative text-white flex flex-col bg-cover bg-center min-h-screen pb-5 pt-5"
+<section class="relative text-white flex flex-col bg-cover bg-center min-h-screen pb-8 pt-8"
     @if($backgroundImage)
     style="background: linear-gradient(180deg, rgba(60, 97, 66, 0.9) 0%, rgba(0, 0, 0, 0.85) 80%), url('{{ $backgroundImage }}'); background-size: cover; background-position: center;"
     @else
@@ -24,24 +24,24 @@
         <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
             {{-- Logo --}}
             @if($showLogo)
-            <div class="flex justify-center mb-5 pt-5">
-                <img src="{{ asset('image/logo/image.png') }}" alt="Grapadi Logo" class="w-28 h-28 md:w-36 md:h-36 object-contain">
+            <div class="flex justify-center mb-8 pt-8">
+                <img src="{{ asset('image/logo/image.png') }}" alt="Grapadi Logo" class="w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain">
             </div>
             @endif
 
             {{-- Title --}}
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display leading-tight mb-5">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight mb-6">
                 {!! $title !!}
             </h1>
             
             {{-- Tagline/Subtitle --}}
             @if($subtitle)
-            <p class="text-lg md:text-xl text-gray-300 mb-5">{{ $subtitle }}</p>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">{{ $subtitle }}</p>
             @endif
 
             @if($ctaText)
             <div class="flex justify-center">
-                <a class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-8 rounded flex items-center gap-2 transition shadow-lg text-lg mb-5" href="{{ $ctaUrl }}">
+                <a class="bg-primary hover:bg-primary-800 text-white font-bold py-4 px-10 rounded flex items-center gap-2 transition shadow-lg text-lg mb-8" href="{{ $ctaUrl }}">
                     {{ $ctaText }}
                     <span class="material-icons-outlined">arrow_forward</span>
                 </a>
