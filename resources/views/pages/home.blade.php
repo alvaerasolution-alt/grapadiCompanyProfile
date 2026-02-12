@@ -117,7 +117,7 @@
 
     {{-- Client Logos --}}
     <x-client-logos title="Trusted By" :brands="$trustedBrands" />
-    <x-client-logos title="Media Covered" :brands="$mediaBrands" />
+    <x-client-logos title="Media Covered" :brands="$mediaBrands" direction="right" />
     
     {{-- Quote Section --}}
     @php

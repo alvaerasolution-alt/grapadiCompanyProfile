@@ -1,6 +1,7 @@
 @props([
     'brands' => collect([]),
     'title' => 'Trusted By',
+    'direction' => 'left',
 ])
 
 @php
@@ -35,7 +36,7 @@
     @endif
     
     <div class="relative">
-        <div class="flex animate-scroll">
+        <div class="flex {{ $direction === 'right' ? 'animate-scroll-reverse' : 'animate-scroll' }}">
             {{-- First set --}}
             <div class="flex items-center gap-16 px-8 shrink-0">
                 @if($hasBrands)
