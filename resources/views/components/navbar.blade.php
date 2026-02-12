@@ -21,7 +21,7 @@ $logoOnly = site_setting('site_logo_only', false);
     class="fixed top-0 w-full z-50 transition-all duration-300"
 >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex justify-between items-center h-24">
             <div class="flex items-center space-x-8">
                 <a class="flex-shrink-0 flex items-center gap-2" href="{{ url('/') }}">
                     @if($logo)
@@ -34,7 +34,7 @@ $logoOnly = site_setting('site_logo_only', false);
                             x-show="!isTransparent || !{{ $logoDark ? 'true' : 'false' }}"
                             src="{{ $logo ? (str_starts_with($logo, 'http') ? $logo : asset('storage/' . $logo)) : asset('image/logo/image.png') }}" 
                             alt="{{ $companyName }} Logo"
-                            class="h-8 w-auto"
+                            class="h-12 w-auto"
                         >
                         @if($logoDark)
                         <img 
@@ -42,14 +42,14 @@ $logoOnly = site_setting('site_logo_only', false);
                             x-cloak
                             src="{{ str_starts_with($logoDark, 'http') ? $logoDark : asset('storage/' . $logoDark) }}" 
                             alt="{{ $companyName }} Logo"
-                            class="h-8 w-auto"
+                            class="h-12 w-auto"
                         >
                         @endif
                     </div>
                     @if(!$logoOnly)
                     <span 
                         :class="isTransparent ? 'text-white' : 'text-gray-900 dark:text-white'"
-                        class="font-bold text-lg font-display transition-colors duration-300"
+                        class="font-bold text-2xl font-display transition-colors duration-300"
                     >
                         {{ $companyName }}
                     </span>
@@ -76,7 +76,7 @@ $logoOnly = site_setting('site_logo_only', false);
                     @endif
                     @endif
                 </a>
-                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <div class="hidden md:flex space-x-6 text-base font-medium">
                     <a 
                         :class="isTransparent ? 'text-white hover:text-gray-200' : 'text-gray-600 dark:text-gray-300 hover:text-primary'"
                         class="flex items-center gap-1 transition-colors duration-300 {{ $currentRoute == '/' ? 'font-semibold' : '' }}" 
