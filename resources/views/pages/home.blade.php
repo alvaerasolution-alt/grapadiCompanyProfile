@@ -63,7 +63,7 @@
     <section class="py-20 bg-surface-light dark:bg-background-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 max-w-3xl mx-auto" data-animate="fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-4">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-gray-900 dark:text-white mb-4">
                     {{ $servicesSection['title'] }}
                 </h2>
             </div>
@@ -134,7 +134,7 @@
     <section class="py-20 bg-surface-light dark:bg-surface-dark">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16" data-animate="fade-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-gray-900 dark:text-white">
                     {{ $insightsSection['title'] }}
                 </h2>
             </div>

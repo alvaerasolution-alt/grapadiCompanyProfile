@@ -33,19 +33,19 @@
                 @endif
                 
                 @if($title)
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-2">
+                <h2 class="text-3xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mb-2">
                     {{ $title }}
                 </h2>
                 @endif
                 
                 @if($highlightedTitle)
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-primary mb-6">
+                <h2 class="text-3xl md:text-5xl font-bold font-display text-primary mb-6">
                     {{ $highlightedTitle }}
                 </h2>
                 @endif
                 
                 @if($description)
-                <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-lg mx-auto lg:mx-0">
+                <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-lg mx-auto lg:mx-0 text-lg lg:text-xl">
                     {{ $description }}
                 </p>
                 @endif

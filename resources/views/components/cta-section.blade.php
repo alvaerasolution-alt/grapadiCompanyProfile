@@ -20,11 +20,11 @@ $bgClasses = match($background) {
 
 <section class="{{ $bgClasses }} py-20">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold font-display mb-6">
+        <h2 class="text-3xl md:text-5xl font-bold font-display mb-6">
             {{ $title }}
         </h2>
         @if($description)
-        <p class="@if($background == 'white') text-gray-600 dark:text-gray-400 @else text-gray-300 @endif mb-10 text-lg">
+        <p class="@if($background == 'white') text-gray-600 dark:text-gray-400 @else text-gray-300 @endif mb-10 text-xl">
             {{ $description }}
         </p>
         @endif
