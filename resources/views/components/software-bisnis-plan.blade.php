@@ -33,13 +33,13 @@
                 @endif
                 
                 @if($title)
-                <h2 class="text-3xl md:text-5xl font-bold font-display text-gray-900 dark:text-white mb-2">
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-2">
                     {{ $title }}
                 </h2>
                 @endif
                 
                 @if($highlightedTitle)
-                <h2 class="text-3xl md:text-5xl font-bold font-display text-primary mb-6">
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-primary mb-6">
                     {{ $highlightedTitle }}
                 </h2>
                 @endif
