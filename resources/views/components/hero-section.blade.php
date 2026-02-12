@@ -12,7 +12,7 @@
     'clientLogosTitle2' => 'Our Technology Partners'
 ])
 
-<section class="relative text-white flex flex-col bg-cover bg-center min-h-screen pb-8 pt-8"
+<section class="relative text-white flex flex-col bg-cover bg-center min-h-screen pb-8 pt-32"
     @if($backgroundImage)
     style="background: linear-gradient(180deg, rgba(60, 97, 66, 0.9) 0%, rgba(0, 0, 0, 0.85) 80%), url('{{ $backgroundImage }}'); background-size: cover; background-position: center;"
     @else
