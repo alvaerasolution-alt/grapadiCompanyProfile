@@ -125,10 +125,10 @@
         100% { transform: translateX(0); }
     }
     .animate-scroll {
-        animation: scroll 20s linear infinite;
+        animation: scroll 3s linear infinite;
     }
     .animate-scroll-reverse {
-        animation: scroll-reverse 20s linear infinite;
+        animation: scroll-reverse 3s linear infinite;
     }
     .animate-scroll:hover,
     .animate-scroll-reverse:hover {
