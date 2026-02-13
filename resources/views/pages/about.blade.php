@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Grapadi')
+@section('title', site_setting('page_title_about', 'About Us - Grapadi'))
 @section('description', 'Strategic Insights, Digital Advantage')
 
 @section('content')

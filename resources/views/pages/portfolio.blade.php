@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Portfolio - Grapadi')
+@section('title', site_setting('page_title_portfolio', 'Portfolio - Grapadi'))
 @section('description', 'Explore our successful projects and client results')
 
 @section('content')

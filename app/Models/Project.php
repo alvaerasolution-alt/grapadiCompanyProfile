@@ -19,12 +19,17 @@ class Project extends Model
         'status',
         'budget',
         'description',
+        'contract_file',
+        'report_file',
     ];
 
     protected $casts = [
         'deadline' => 'date',
         'budget' => 'decimal:2',
         'progress' => 'integer',
+
+        'contract_file' => 'array',
+        'report_file' => 'array',
     ];
 
     public const TYPE_OPTIONS = [

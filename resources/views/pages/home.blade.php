@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Grapadi')
+@section('title', site_setting('page_title_home', 'Home - Grapadi'))
 @section('description', 'Market Intelligence & Consulting - Be The Top 1% Businesses')
 
 @section('content')

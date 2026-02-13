@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Blog & Insights - Grapadi')
+@section('title', site_setting('page_title_blog', 'Blog & Insights - Grapadi'))
 @section('description', 'Latest market intelligence and industry insights')
 
 @section('content')

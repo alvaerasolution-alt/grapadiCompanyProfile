@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Our Journey - Grapadi')
+@section('title', site_setting('page_title_timeline', 'Our Journey - Grapadi'))
 @section('description', 'The milestones that defined our path to excellence.')
 
 @section('content')

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - Grapadi')
+@section('title', site_setting('page_title_contact', 'Contact Us - Grapadi'))
 @section('description', 'Get in touch with our team for inquiries and consultations')
 
 @php

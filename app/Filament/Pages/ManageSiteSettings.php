@@ -159,6 +159,15 @@ class ManageSiteSettings extends Page implements HasForms
             // Services Page - Platform Access Steps
             'platform_steps_title' => SiteSetting::get('platform_steps_title', 'Grapadi Strategix Platform Access & Dashboard'),
             'platform_steps' => $this->decodeJsonItems(SiteSetting::get('platform_steps', null), 'steps'),
+
+            // SEO & Titles
+            'page_title_home' => SiteSetting::get('page_title_home', 'Home'),
+            'page_title_about' => SiteSetting::get('page_title_about', 'About Us'),
+            'page_title_services' => SiteSetting::get('page_title_services', 'Our Services'),
+            'page_title_portfolio' => SiteSetting::get('page_title_portfolio', 'Portfolio'),
+            'page_title_blog' => SiteSetting::get('page_title_blog', 'Blog'),
+            'page_title_contact' => SiteSetting::get('page_title_contact', 'Contact Us'),
+            'page_title_timeline' => SiteSetting::get('page_title_timeline', 'Company Timeline'),
         ]);
     }
 
@@ -208,6 +217,45 @@ class ManageSiteSettings extends Page implements HasForms
                                             ->rows(3)
                                             ->placeholder('Jl. Contoh No. 123, Jakarta'),
                                     ]),
+                                    ]),
+
+                        
+                        // Tab: SEO & Titles
+                        Forms\Components\Tabs\Tab::make('SEO & Titles')
+                            ->icon('heroicon-o-globe-alt')
+                            ->schema([
+                                Forms\Components\Section::make('Page Titles')
+                                    ->description('Judul halaman yang akan muncul di tab browser')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('page_title_home')
+                                            ->label('Home Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('page_title_about')
+                                            ->label('About Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('page_title_services')
+                                            ->label('Services Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('page_title_portfolio')
+                                            ->label('Portfolio Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('page_title_blog')
+                                            ->label('Blog Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('page_title_timeline')
+                                            ->label('Timeline Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('page_title_contact')
+                                            ->label('Contact Page Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                    ])->columns(2),
                             ]),
 
                         // Tab 2: Logo & Branding
@@ -1082,6 +1130,15 @@ class ManageSiteSettings extends Page implements HasForms
             }
         }
         SiteSetting::set('platform_steps', json_encode($steps), 'services_page', 'json');
+
+        // SEO & Titles
+        SiteSetting::set('page_title_home', $data['page_title_home'], 'seo', 'text');
+        SiteSetting::set('page_title_about', $data['page_title_about'], 'seo', 'text');
+        SiteSetting::set('page_title_services', $data['page_title_services'], 'seo', 'text');
+        SiteSetting::set('page_title_portfolio', $data['page_title_portfolio'], 'seo', 'text');
+        SiteSetting::set('page_title_blog', $data['page_title_blog'], 'seo', 'text');
+        SiteSetting::set('page_title_timeline', $data['page_title_timeline'], 'seo', 'text');
+        SiteSetting::set('page_title_contact', $data['page_title_contact'], 'seo', 'text');
 
         // Clear cache
         SiteSetting::clearCache();

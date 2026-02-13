@@ -4,6 +4,18 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Inquiry;
+use App\Http\Controllers\ProjectContractController;
+
+// Project contract preview
+// Project contract preview
+Route::get('/admin/projects/{project}/contract', [ProjectContractController::class, 'show'])
+    ->name('projects.contract')
+    ->middleware('auth');
+
+// Project report preview
+Route::get('/admin/projects/{project}/report', [\App\Http\Controllers\ProjectReportController::class, 'show'])
+    ->name('projects.report')
+    ->middleware('auth');
 
 // Homepage
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -62,6 +74,11 @@ Route::get('/robots.txt', function () {
 // Newsletter subscription
 Route::post('/newsletter/subscribe', [\App\Http\Controllers\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/newsletter/unsubscribe', [\App\Http\Controllers\NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
+// Redirect /login to Filament admin login
+Route::get('/login', function () {
+    return redirect()->route('filament.admin.auth.login');
+})->name('login');
 
 // Blog article detail (catch-all, must be LAST route)
 Route::get('/{slug}', [PageController::class, 'articleDetail'])->name('blog.show');

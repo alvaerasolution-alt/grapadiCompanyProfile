@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Our Services - Grapadi')
+@section('title', site_setting('page_title_services', 'Our Services - Grapadi'))
 @section('description', 'Strategic Intelligence for Global Markets - Data-driven insights that empower executive decision-making')
 
 @section('content')
