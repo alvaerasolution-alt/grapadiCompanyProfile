@@ -67,10 +67,12 @@ class ProjectResource extends Resource
 
                 Forms\Components\Section::make('Progress & Budget')
                     ->schema([
-                        Forms\Components\ViewField::make('progress')
-                            ->view('filament.forms.components.range-slider')
+                        Forms\Components\TextInput::make('progress')
                             ->label('Progress (%)')
+                            ->numeric()
                             ->default(0)
+                            ->minValue(0)
+                            ->maxValue(100)
                             ->columnSpanFull(),
                         Forms\Components\TextInput::make('budget')
                             ->label('Budget (Rp)')
