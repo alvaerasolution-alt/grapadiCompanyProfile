@@ -70,6 +70,7 @@ class ProjectResource extends Resource
                         Forms\Components\ViewField::make('progress')
                             ->view('filament.forms.components.range-slider')
                             ->label('Progress (%)')
+                            ->default(0)
                             ->columnSpanFull(),
                         Forms\Components\TextInput::make('budget')
                             ->label('Budget (Rp)')
