@@ -20,7 +20,7 @@
     $hasBrands = $brands && $brands->count() > 0;
     
     // Calculate repetition to ensure seamless scroll even on wide screens
-    $minItems = 15;
+    $minItems = 30;
     $itemCount = $hasBrands ? $brands->count() : count($defaultLogos);
     $repeatCount = $itemCount > 0 ? ceil($minItems / $itemCount) : 1;
     
