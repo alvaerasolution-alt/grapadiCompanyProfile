@@ -57,11 +57,13 @@
                             @php $logoUrl = $getLogoUrl($brand); @endphp
                             @if($logoUrl)
                                 @if($brand->url)
-                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
                                         <img 
                                             alt="{{ $brand->name }}" 
                                             class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
+                                            loading="lazy"
+                                            width="112"
+                                            height="64"
                                         >
                                     </a>
                                 @else
@@ -70,6 +72,9 @@
                                             alt="{{ $brand->name }}" 
                                             class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
+                                            loading="lazy"
+                                            width="112"
+                                            height="64"
                                         >
                                     </div>
                                 @endif
@@ -81,6 +86,9 @@
                                 alt="{{ $logo['name'] }}" 
                                 class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                 src="{{ $logo['url'] }}"
+                                loading="lazy"
+                                width="112"
+                                height="64"
                             >
                         @endforeach
                     @endif
@@ -101,6 +109,9 @@
                                             alt="{{ $brand->name }}" 
                                             class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
+                                            loading="lazy"
+                                            width="112"
+                                            height="64"
                                         >
                                     </a>
                                 @else
@@ -109,6 +120,9 @@
                                             alt="{{ $brand->name }}" 
                                             class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
+                                            loading="lazy"
+                                            width="112"
+                                            height="64"
                                         >
                                     </div>
                                 @endif
@@ -120,6 +134,9 @@
                                 alt="{{ $logo['name'] }}" 
                                 class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                 src="{{ $logo['url'] }}"
+                                loading="lazy"
+                                width="112"
+                                height="64"
                             >
                         @endforeach
                     @endif

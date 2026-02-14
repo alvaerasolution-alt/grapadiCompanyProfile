@@ -13,9 +13,16 @@
 @endphp
 
 <section 
-    class="relative w-full bg-fixed bg-cover bg-center flex items-center justify-center" 
-    style="height: {{ $height }}; background-image: url('{{ $imageUrl }}');"
+    class="relative w-full flex items-center justify-center overflow-hidden" 
+    style="height: {{ $height }};"
 >
+    {{-- Background Image --}}
+    <img 
+        src="{{ $imageUrl }}" 
+        alt="Quote Background" 
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+    >
     <div class="absolute inset-0 bg-navy-brand/80"></div>
     <div class="relative z-10 max-w-4xl px-6 text-center">
         <h2 class="text-white text-2xl md:text-4xl font-bold mb-6">

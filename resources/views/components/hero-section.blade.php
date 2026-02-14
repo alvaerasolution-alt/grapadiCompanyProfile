@@ -25,7 +25,14 @@
             {{-- Logo --}}
             @if($showLogo)
             <div class="flex justify-center mb-8 pt-8">
-                <img src="{{ asset('image/logo/image.png') }}" alt="Grapadi Logo" class="w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain">
+                <img 
+                    src="{{ asset('image/logo/image.png') }}" 
+                    alt="Grapadi Logo" 
+                    class="w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
+                    width="256"
+                    height="256"
+                    fetchpriority="high"
+                >
             </div>
             @endif
 

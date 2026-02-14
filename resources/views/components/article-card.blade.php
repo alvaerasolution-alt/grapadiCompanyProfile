@@ -13,7 +13,7 @@
 <article class="bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
     <div class="h-48 overflow-hidden relative">
         @if($image)
-        <img alt="{{ $title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" src="{{ $image }}">
+        <img alt="{{ $title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" src="{{ $image }}" loading="lazy">
         @else
         <div class="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
             <span class="material-icons-outlined text-4xl text-gray-400">article</span>

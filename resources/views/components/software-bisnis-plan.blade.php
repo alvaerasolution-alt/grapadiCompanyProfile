@@ -79,7 +79,7 @@
                     <div class="relative bg-gray-800 rounded-t-xl pt-4 px-4 pb-0 shadow-2xl">
                         {{-- Screen --}}
                         <div class="bg-gray-900 rounded-t-lg overflow-hidden aspect-video">
-                            <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="w-full h-full object-cover">
+                            <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="w-full h-full object-cover" loading="lazy">
                         </div>
                     </div>
                     {{-- Laptop Base --}}
@@ -90,7 +90,7 @@
                     <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-black/20 blur-xl rounded-full"></div>
                     @else
                     {{-- Simple Image --}}
-                    <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="w-full h-auto rounded-lg shadow-2xl">
+                    <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="w-full h-auto rounded-lg shadow-2xl" loading="lazy">
                     @endif
                 </div>
             </div>

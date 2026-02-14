@@ -30,7 +30,7 @@
                         $directorImageUrl = $directorImage;
                     }
                     @endphp
-                <img alt="{{ $director['name'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" src="{{ $directorImageUrl }}">
+                <img alt="{{ $director['name'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" src="{{ $directorImageUrl }}" loading="lazy">
                 <div class="absolute inset-0 bg-navy-brand/0"></div>
             </div>
             <div class="order-1 lg:order-1" data-animate="fade-in-left">
