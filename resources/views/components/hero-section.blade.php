@@ -12,13 +12,16 @@
     'clientLogosTitle2' => 'Our Technology Partners'
 ])
 
-<section class="relative text-white flex flex-col bg-cover bg-center min-h-screen pb-8 pt-32"
-    @if($backgroundImage)
-    style="background: linear-gradient(180deg, rgba(60, 97, 66, 0.9) 0%, rgba(0, 0, 0, 0.85) 80%), url('{{ $backgroundImage }}'); background-size: cover; background-position: center;"
-    @else
-    style="background: linear-gradient(180deg, rgba(60, 97, 66, 0.9) 0%, rgba(0, 0, 0, 0.85) 80%), url('{{ asset('image/background/image.png') }}'); background-size: cover; background-position: center;"
-    @endif
 >
+    {{-- Background Image (LCP Optimized) --}}
+    @if($backgroundImage)
+    <img src="{{ $backgroundImage }}" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" loading="eager">
+    @else
+    <img src="{{ asset('image/background/image.png') }}" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" loading="eager">
+    @endif
+    
+    {{-- Gradient Overlay --}}
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(60, 97, 66, 0.9) 0%, rgba(0, 0, 0, 0.85) 80%);"></div>
     {{-- Main Content - Centered --}}
     <div class="flex-1 flex items-center justify-center">
         <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
