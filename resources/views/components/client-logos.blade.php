@@ -36,10 +36,14 @@
     };
 @endphp
 
-<div class="bg-white dark:bg-surface-dark py-12 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="bg-white dark:bg-surface-dark py-12 border-b border-gray-200 dark:border-gray-800 overflow-hidden relative">
+    {{-- Gradient Overlays --}}
+    <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-surface-dark dark:via-surface-dark/80 dark:to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white via-white/80 to-transparent dark:from-surface-dark dark:via-surface-dark/80 dark:to-transparent z-10 pointer-events-none"></div>
+
     {{-- Title --}}
     @if($title)
-    <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-8 uppercase tracking-wider font-medium">{{ $title }}</p>
+    <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-8 uppercase tracking-wider font-medium relative z-10">{{ $title }}</p>
     @endif
     
     {{-- Row 1: Scroll Left --}}
