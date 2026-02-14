@@ -117,8 +117,8 @@
 
     {{-- Client Logos --}}
     {{-- Client Logos --}}
-    <x-client-logos title="Trusted By" :brands="$trustedBrands" :speed="$logoScrollSpeed" />
-    <x-client-logos title="Media Covered" :brands="$mediaBrands" direction="static" :speed="$logoScrollSpeed" />
+    <x-client-logos title="Trusted By" :brands="$trustedBrands" :speed="$logoScrollSpeed" :rows="2" />
+    <x-client-logos title="Media Covered" :brands="$mediaBrands" :speed="$logoScrollSpeed" />
     
     {{-- Quote Section --}}
     @php

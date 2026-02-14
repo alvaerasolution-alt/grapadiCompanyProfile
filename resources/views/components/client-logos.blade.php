@@ -3,6 +3,7 @@
     'title' => 'Trusted By',
     'direction' => 'left',
     'speed' => 5,
+    'rows' => 1,
 ])
 
 @php
@@ -124,8 +125,8 @@
         </div>
     </div>
 
-    {{-- Row 2: Scroll Right (Only if not static) --}}
-    @if($direction !== 'static')
+    {{-- Row 2: Scroll Right (Only if not static and rows > 1) --}}
+    @if($direction !== 'static' && $rows > 1)
     <div class="relative overflow-hidden">
         <div class="flex animate-scroll-reverse">
             {{-- First set --}}
