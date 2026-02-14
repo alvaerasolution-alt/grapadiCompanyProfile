@@ -12,7 +12,7 @@
     'clientLogosTitle2' => 'Our Technology Partners'
 ])
 
->
+<section class="relative text-white flex flex-col bg-cover bg-center min-h-screen pb-8 pt-32">
     {{-- Background Image (LCP Optimized) --}}
     @if($backgroundImage)
     <img src="{{ $backgroundImage }}" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" loading="eager">
@@ -61,7 +61,7 @@
     </div>
     {{-- Stats --}}
     @if(count($stats) > 0)
-    <div class="w-full px-4 pb-8">
+    <div class="w-full px-4 pb-8 relative z-10">
         <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-700 pt-8 text-center">
             @foreach($stats as $stat)
             <div class="flex flex-col items-center">
