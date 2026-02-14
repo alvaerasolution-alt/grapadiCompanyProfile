@@ -1056,6 +1056,9 @@ class ManageSiteSettings extends Page implements HasForms
         // Insights Section
         SiteSetting::set('insights_title', $data['insights_title'], 'homepage', 'text');
 
+        // Client Logos Section
+        SiteSetting::set('logo_scroll_speed', $data['logo_scroll_speed'], 'homepage', 'integer');
+
         // CTA Section
         SiteSetting::set('cta_title', $data['cta_title'], 'homepage', 'text');
         SiteSetting::set('cta_description', $data['cta_description'], 'homepage', 'text');

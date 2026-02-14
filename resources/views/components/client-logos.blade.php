@@ -36,8 +36,9 @@
     <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-8 uppercase tracking-wider font-medium">{{ $title }}</p>
     @endif
     
-    <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }}">
-        <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center' : ($direction === 'right' ? 'animate-scroll-reverse' : 'animate-scroll') }}">
+    {{-- Row 1: Scroll Left --}}
+    <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }} mb-4">
+        <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center' : 'animate-scroll' }}">
             {{-- First set --}}
             <div class="flex items-center gap-16 px-8 shrink-0">
                 @if($hasBrands)
@@ -74,7 +75,7 @@
                 @endif
             </div>
             
-            {{-- Duplicate for seamless scroll (hidden when static) --}}
+            {{-- Duplicate for seamless scroll --}}
             @if($direction !== 'static')
             <div class="flex items-center gap-16 px-8 shrink-0">
                 @if($hasBrands)
@@ -113,6 +114,85 @@
             @endif
         </div>
     </div>
+
+    {{-- Row 2: Scroll Right (Only if not static) --}}
+    @if($direction !== 'static')
+    <div class="relative overflow-hidden">
+        <div class="flex animate-scroll-reverse">
+            {{-- First set --}}
+            <div class="flex items-center gap-16 px-8 shrink-0">
+                @if($hasBrands)
+                    @foreach($brands as $brand)
+                        @php $logoUrl = $getLogoUrl($brand); @endphp
+                        @if($logoUrl)
+                            @if($brand->url)
+                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
+                                    <img 
+                                        alt="{{ $brand->name }}" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        src="{{ $logoUrl }}"
+                                    >
+                                </a>
+                            @else
+                                <div class="flex items-center justify-center w-28 h-16">
+                                    <img 
+                                        alt="{{ $brand->name }}" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        src="{{ $logoUrl }}"
+                                    >
+                                </div>
+                            @endif
+                        @endif
+                    @endforeach
+                @else
+                    @foreach($defaultLogos as $logo)
+                        <img 
+                            alt="{{ $logo['name'] }}" 
+                            class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                            src="{{ $logo['url'] }}"
+                        >
+                    @endforeach
+                @endif
+            </div>
+            
+            {{-- Duplicate for seamless scroll --}}
+            <div class="flex items-center gap-16 px-8 shrink-0">
+                @if($hasBrands)
+                    @foreach($brands as $brand)
+                        @php $logoUrl = $getLogoUrl($brand); @endphp
+                        @if($logoUrl)
+                            @if($brand->url)
+                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
+                                    <img 
+                                        alt="{{ $brand->name }}" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        src="{{ $logoUrl }}"
+                                    >
+                                </a>
+                            @else
+                                <div class="flex items-center justify-center w-28 h-16">
+                                    <img 
+                                        alt="{{ $brand->name }}" 
+                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                        src="{{ $logoUrl }}"
+                                    >
+                                </div>
+                            @endif
+                        @endif
+                    @endforeach
+                @else
+                    @foreach($defaultLogos as $logo)
+                        <img 
+                            alt="{{ $logo['name'] }}" 
+                            class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                            src="{{ $logo['url'] }}"
+                        >
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
+    @endif
 </div>
 
 @push('styles')
