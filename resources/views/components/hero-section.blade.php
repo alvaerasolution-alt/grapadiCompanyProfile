@@ -40,7 +40,7 @@
             @endif
 
             {{-- Title --}}
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight mb-6">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight mb-6 text-white">
                 {!! $title !!}
             </h1>
             
