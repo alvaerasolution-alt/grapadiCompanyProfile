@@ -18,6 +18,11 @@
     
     $hasBrands = $brands && $brands->count() > 0;
     
+    // Calculate repetition to ensure seamless scroll even on wide screens
+    $minItems = 15;
+    $itemCount = $hasBrands ? $brands->count() : count($defaultLogos);
+    $repeatCount = $itemCount > 0 ? ceil($minItems / $itemCount) : 1;
+    
     // Helper function to get logo URL
     $getLogoUrl = function($brand) {
         if (!empty($brand->logo)) {
@@ -41,75 +46,79 @@
         <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center' : 'animate-scroll' }}">
             {{-- First set --}}
             <div class="flex items-center gap-16 px-8 shrink-0">
-                @if($hasBrands)
-                    @foreach($brands as $brand)
-                        @php $logoUrl = $getLogoUrl($brand); @endphp
-                        @if($logoUrl)
-                            @if($brand->url)
-                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </a>
-                            @else
-                                <div class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </div>
+                @for ($i = 0; $i < $repeatCount; $i++)
+                    @if($hasBrands)
+                        @foreach($brands as $brand)
+                            @php $logoUrl = $getLogoUrl($brand); @endphp
+                            @if($logoUrl)
+                                @if($brand->url)
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </a>
+                                @else
+                                    <div class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </div>
+                                @endif
                             @endif
-                        @endif
-                    @endforeach
-                @else
-                    @foreach($defaultLogos as $logo)
-                        <img 
-                            alt="{{ $logo['name'] }}" 
-                            class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                            src="{{ $logo['url'] }}"
-                        >
-                    @endforeach
-                @endif
+                        @endforeach
+                    @else
+                        @foreach($defaultLogos as $logo)
+                            <img 
+                                alt="{{ $logo['name'] }}" 
+                                class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                src="{{ $logo['url'] }}"
+                            >
+                        @endforeach
+                    @endif
+                @endfor
             </div>
             
             {{-- Duplicate for seamless scroll --}}
             @if($direction !== 'static')
             <div class="flex items-center gap-16 px-8 shrink-0">
-                @if($hasBrands)
-                    @foreach($brands as $brand)
-                        @php $logoUrl = $getLogoUrl($brand); @endphp
-                        @if($logoUrl)
-                            @if($brand->url)
-                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </a>
-                            @else
-                                <div class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </div>
+                @for ($i = 0; $i < $repeatCount; $i++)
+                    @if($hasBrands)
+                        @foreach($brands as $brand)
+                            @php $logoUrl = $getLogoUrl($brand); @endphp
+                            @if($logoUrl)
+                                @if($brand->url)
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </a>
+                                @else
+                                    <div class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </div>
+                                @endif
                             @endif
-                        @endif
-                    @endforeach
-                @else
-                    @foreach($defaultLogos as $logo)
-                        <img 
-                            alt="{{ $logo['name'] }}" 
-                            class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                            src="{{ $logo['url'] }}"
-                        >
-                    @endforeach
-                @endif
+                        @endforeach
+                    @else
+                        @foreach($defaultLogos as $logo)
+                            <img 
+                                alt="{{ $logo['name'] }}" 
+                                class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                src="{{ $logo['url'] }}"
+                            >
+                        @endforeach
+                    @endif
+                @endfor
             </div>
             @endif
         </div>
@@ -121,74 +130,78 @@
         <div class="flex animate-scroll-reverse">
             {{-- First set --}}
             <div class="flex items-center gap-16 px-8 shrink-0">
-                @if($hasBrands)
-                    @foreach($brands as $brand)
-                        @php $logoUrl = $getLogoUrl($brand); @endphp
-                        @if($logoUrl)
-                            @if($brand->url)
-                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </a>
-                            @else
-                                <div class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </div>
+                @for ($i = 0; $i < $repeatCount; $i++)
+                    @if($hasBrands)
+                        @foreach($brands as $brand)
+                            @php $logoUrl = $getLogoUrl($brand); @endphp
+                            @if($logoUrl)
+                                @if($brand->url)
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </a>
+                                @else
+                                    <div class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </div>
+                                @endif
                             @endif
-                        @endif
-                    @endforeach
-                @else
-                    @foreach($defaultLogos as $logo)
-                        <img 
-                            alt="{{ $logo['name'] }}" 
-                            class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                            src="{{ $logo['url'] }}"
-                        >
-                    @endforeach
-                @endif
+                        @endforeach
+                    @else
+                        @foreach($defaultLogos as $logo)
+                            <img 
+                                alt="{{ $logo['name'] }}" 
+                                class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                src="{{ $logo['url'] }}"
+                            >
+                        @endforeach
+                    @endif
+                @endfor
             </div>
             
             {{-- Duplicate for seamless scroll --}}
             <div class="flex items-center gap-16 px-8 shrink-0">
-                @if($hasBrands)
-                    @foreach($brands as $brand)
-                        @php $logoUrl = $getLogoUrl($brand); @endphp
-                        @if($logoUrl)
-                            @if($brand->url)
-                                <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </a>
-                            @else
-                                <div class="flex items-center justify-center w-28 h-16">
-                                    <img 
-                                        alt="{{ $brand->name }}" 
-                                        class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                                        src="{{ $logoUrl }}"
-                                    >
-                                </div>
+                @for ($i = 0; $i < $repeatCount; $i++)
+                    @if($hasBrands)
+                        @foreach($brands as $brand)
+                            @php $logoUrl = $getLogoUrl($brand); @endphp
+                            @if($logoUrl)
+                                @if($brand->url)
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </a>
+                                @else
+                                    <div class="flex items-center justify-center w-28 h-16">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            src="{{ $logoUrl }}"
+                                        >
+                                    </div>
+                                @endif
                             @endif
-                        @endif
-                    @endforeach
-                @else
-                    @foreach($defaultLogos as $logo)
-                        <img 
-                            alt="{{ $logo['name'] }}" 
-                            class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
-                            src="{{ $logo['url'] }}"
-                        >
-                    @endforeach
-                @endif
+                        @endforeach
+                    @else
+                        @foreach($defaultLogos as $logo)
+                            <img 
+                                alt="{{ $logo['name'] }}" 
+                                class="{{ $logo['height'] }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                src="{{ $logo['url'] }}"
+                            >
+                        @endforeach
+                    @endif
+                @endfor
             </div>
         </div>
     </div>
