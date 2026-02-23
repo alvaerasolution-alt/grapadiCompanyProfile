@@ -56,6 +56,7 @@
                         @foreach($brands as $brand)
                             @php $logoUrl = $getLogoUrl($brand); @endphp
                             @if($logoUrl)
+                                @if($brand->url)
                                     <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center {{ $direction === 'static' ? 'h-10 sm:h-12 md:h-16 w-auto' : 'w-28 h-16' }}">
                                         <img 
                                             alt="{{ $brand->name }}" 
