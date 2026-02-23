@@ -49,30 +49,30 @@
     {{-- Row 1: Scroll Left --}}
     <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }} mb-4">
         @if($direction === 'static')
-        {{-- Static Grid Layout: 2 cols mobile, 3 sm, 4 md, 6 lg --}}
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-6 px-4 sm:px-8 md:px-16 max-w-6xl mx-auto">
+        {{-- Static Grid Layout: 2 cols mobile, 3 sm, 6 lg+ --}}
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto">
             @if($hasBrands)
                 @foreach($brands as $brand)
                     @php $logoUrl = $getLogoUrl($brand); @endphp
                     @if($logoUrl)
                         @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden" style="height:50px;width:100%;">
+                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden" style="height:60px;width:100%;">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain" 
+                                    class="object-contain dark:brightness-0 dark:invert opacity-80 hover:opacity-100 transition-opacity duration-300" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
-                                    style="max-width:100%;max-height:45px;"
+                                    style="max-width:100%;max-height:52px;"
                                 >
                             </a>
                         @else
-                            <div class="flex items-center justify-center overflow-hidden" style="height:50px;width:100%;">
+                            <div class="flex items-center justify-center overflow-hidden" style="height:60px;width:100%;">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain" 
+                                    class="object-contain dark:brightness-0 dark:invert opacity-80 hover:opacity-100 transition-opacity duration-300" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
-                                    style="max-width:100%;max-height:45px;"
+                                    style="max-width:100%;max-height:52px;"
                                 >
                             </div>
                         @endif
@@ -80,13 +80,13 @@
                 @endforeach
             @else
                 @foreach($defaultLogos as $logo)
-                    <div class="flex items-center justify-center overflow-hidden" style="height:50px;width:100%;">
+                    <div class="flex items-center justify-center overflow-hidden" style="height:60px;width:100%;">
                         <img 
                             alt="{{ $logo['name'] }}" 
-                            class="object-contain" 
+                            class="object-contain dark:brightness-0 dark:invert opacity-80 hover:opacity-100 transition-opacity duration-300" 
                             src="{{ $logo['url'] }}"
                             loading="lazy"
-                            style="max-width:100%;max-height:45px;"
+                            style="max-width:100%;max-height:52px;"
                         >
                     </div>
                 @endforeach
