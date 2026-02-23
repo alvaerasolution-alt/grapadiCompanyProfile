@@ -187,6 +187,7 @@
             </div>
             @endif
         </div>
+        @endif
     </div>
 
     {{-- Row 2: Scroll Right (Only if not static and rows > 1) --}}
