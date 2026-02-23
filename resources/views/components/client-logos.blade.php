@@ -49,30 +49,28 @@
     {{-- Row 1: Scroll Left --}}
     <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }} mb-4">
         @if($direction === 'static')
-        {{-- Static Grid Layout: 2 cols mobile, 3 sm, 4 md, 6 lg --}}
-        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8 px-4 sm:px-8 md:px-16 max-w-7xl mx-auto">
+        {{-- Static Grid Layout: 3 cols mobile, 4 sm, 5 md, 7 lg --}}
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-x-6 gap-y-8 px-4 sm:px-8 md:px-16 max-w-7xl mx-auto">
             @if($hasBrands)
                 @foreach($brands as $brand)
                     @php $logoUrl = $getLogoUrl($brand); @endphp
                     @if($logoUrl)
                         @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 bg-white rounded-lg" style="aspect-ratio:1;">
+                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-2 h-16 md:h-20">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain" 
+                                    class="object-contain max-h-full max-w-full" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
-                                    style="max-width:60%;max-height:60%;"
                                 >
                             </a>
                         @else
-                            <div class="flex items-center justify-center p-3 bg-white rounded-lg" style="aspect-ratio:1;">
+                            <div class="flex items-center justify-center p-2 h-16 md:h-20">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain" 
+                                    class="object-contain max-h-full max-w-full" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
-                                    style="max-width:60%;max-height:60%;"
                                 >
                             </div>
                         @endif
@@ -80,13 +78,12 @@
                 @endforeach
             @else
                 @foreach($defaultLogos as $logo)
-                    <div class="flex items-center justify-center p-3 bg-white rounded-lg" style="aspect-ratio:1;">
+                    <div class="flex items-center justify-center p-2 h-16 md:h-20">
                         <img 
                             alt="{{ $logo['name'] }}" 
-                            class="object-contain" 
+                            class="object-contain max-h-full max-w-full" 
                             src="{{ $logo['url'] }}"
                             loading="lazy"
-                            style="max-width:60%;max-height:60%;"
                         >
                     </div>
                 @endforeach
