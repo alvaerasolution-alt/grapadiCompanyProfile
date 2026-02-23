@@ -56,7 +56,7 @@
                     @php $logoUrl = $getLogoUrl($brand); @endphp
                     @if($logoUrl)
                         @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 " style="aspect-ratio:1;">
+                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 bg-white rounded-lg" style="aspect-ratio:1;">
                                 <img 
                                     alt="{{ $brand->name }}" 
                                     class="object-contain" 
@@ -66,7 +66,7 @@
                                 >
                             </a>
                         @else
-                            <div class="flex items-center justify-center p-3 " style="aspect-ratio:1;">
+                            <div class="flex items-center justify-center p-3 bg-white rounded-lg" style="aspect-ratio:1;">
                                 <img 
                                     alt="{{ $brand->name }}" 
                                     class="object-contain" 
@@ -80,7 +80,7 @@
                 @endforeach
             @else
                 @foreach($defaultLogos as $logo)
-                    <div class="flex items-center justify-center p-3 " style="aspect-ratio:1;">
+                    <div class="flex items-center justify-center p-3 bg-white rounded-lg" style="aspect-ratio:1;">
                         <img 
                             alt="{{ $logo['name'] }}" 
                             class="object-contain" 
