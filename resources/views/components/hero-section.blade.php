@@ -83,75 +83,33 @@
         <p class="text-center text-base text-gray-400 mb-6 uppercase tracking-wider">{{ $clientLogosTitle }}</p>
         @endif
         
-        {{-- Row 1 - Scroll Left --}}
-        <div class="relative overflow-hidden mb-4">
-            <div class="flex animate-scroll-hero">
-                <div class="flex items-center gap-16 px-8 shrink-0">
-                    <img alt="Google" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-                    <img alt="Microsoft" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg">
-                    <img alt="Amazon" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-                    <img alt="Meta" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg">
-                    <img alt="Apple" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
-                    <img alt="Netflix" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-                </div>
-                <div class="flex items-center gap-16 px-8 shrink-0">
-                    <img alt="Google" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-                    <img alt="Microsoft" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg">
-                    <img alt="Amazon" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-                    <img alt="Meta" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg">
-                    <img alt="Apple" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
-                    <img alt="Netflix" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-                </div>
+        {{-- Row 1 - Static --}}
+        <div class="relative mb-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 px-4">
+                <img alt="Google" class="h-6 sm:h-8 md:h-10 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+                <img alt="Microsoft" class="h-5 sm:h-6 md:h-8 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg">
+                <img alt="Amazon" class="h-6 sm:h-7 md:h-9 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+                <img alt="Meta" class="h-5 sm:h-6 md:h-8 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg">
+                <img alt="Apple" class="h-6 sm:h-8 md:h-10 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
+                <img alt="Netflix" class="h-5 sm:h-6 md:h-8 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
             </div>
         </div>
         
-        {{-- Row 2 - Scroll Right --}}
+        {{-- Row 2 - Static --}}
         @if($clientLogosTitle2)
-        <p class="text-center text-base text-gray-400 mb-4 mt-6 uppercase tracking-wider">{{ $clientLogosTitle2 }}</p>
+        <p class="text-center text-base text-gray-400 mb-6 mt-8 uppercase tracking-wider">{{ $clientLogosTitle2 }}</p>
         @endif
-        <div class="relative overflow-hidden">
-            <div class="flex animate-scroll-hero-reverse">
-                <div class="flex items-center gap-16 px-8 shrink-0">
-                    <img alt="Spotify" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
-                    <img alt="IBM" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
-                    <img alt="Oracle" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg">
-                    <img alt="SAP" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg">
-                    <img alt="Adobe" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.svg">
-                    <img alt="Intel" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg">
-                </div>
-                <div class="flex items-center gap-16 px-8 shrink-0">
-                    <img alt="Spotify" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
-                    <img alt="IBM" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
-                    <img alt="Oracle" class="h-6 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg">
-                    <img alt="SAP" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg">
-                    <img alt="Adobe" class="h-7 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.svg">
-                    <img alt="Intel" class="h-8 object-contain brightness-0 invert opacity-70" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg">
-                </div>
+        <div class="relative">
+            <div class="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16 px-4">
+                <img alt="Spotify" class="h-6 sm:h-7 md:h-9 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
+                <img alt="IBM" class="h-6 sm:h-8 md:h-10 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
+                <img alt="Oracle" class="h-5 sm:h-6 md:h-8 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg">
+                <img alt="SAP" class="h-6 sm:h-7 md:h-9 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg">
+                <img alt="Adobe" class="h-6 sm:h-7 md:h-9 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.svg">
+                <img alt="Intel" class="h-6 sm:h-8 md:h-10 object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg">
             </div>
         </div>
     </div>
     @endif
 </section>
 
-@push('styles')
-<style>
-    @keyframes scroll-hero {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-    @keyframes scroll-hero-reverse {
-        0% { transform: translateX(-50%); }
-        100% { transform: translateX(0); }
-    }
-    .animate-scroll-hero {
-        animation: scroll-hero 20s linear infinite;
-    }
-    .animate-scroll-hero-reverse {
-        animation: scroll-hero-reverse 20s linear infinite;
-    }
-    .animate-scroll-hero:hover,
-    .animate-scroll-hero-reverse:hover {
-        animation-play-state: paused;
-    }
-</style>
-@endpush

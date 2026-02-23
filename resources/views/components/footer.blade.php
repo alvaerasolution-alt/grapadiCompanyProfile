@@ -2,6 +2,8 @@
 // Get site settings
 $companyName = site_setting('site_company_name', 'Grapadi');
 $email = site_setting('site_email', 'info@grapadi.com');
+$address = site_setting('site_address', '');
+$phone = site_setting('site_phone', '');
 $logo = site_setting('site_logo', '');
 
 // Footer content
@@ -85,10 +87,25 @@ $copyrightText = str_replace(['{year}', '{company}'], [date('Y'), strtoupper($co
             </div>
             <div>
                 <h5 class="text-gray-500 font-bold text-xs tracking-widest uppercase mb-4">Contact</h5>
+                
+                @if($address)
+                <div class="flex items-start gap-2 text-gray-300 mb-3">
+                    <span class="material-icons-outlined text-lg mt-0.5">location_on</span>
+                    <span class="flex-1 text-sm">{!! nl2br(e($address)) !!}</span>
+                </div>
+                @endif
+
+                @if($phone)
+                <div class="flex items-center gap-2 text-gray-300 mb-3">
+                    <span class="material-icons-outlined text-lg">phone</span>
+                    <span class="text-sm">{!! nl2br(e($phone)) !!}</span>
+                </div>
+                @endif
+
                 @if($email)
                 <div class="flex items-center gap-2 text-gray-300">
                     <span class="material-icons-outlined text-lg">mail_outline</span>
-                    <span>{{ $email }}</span>
+                    <span class="text-sm">{{ $email }}</span>
                 </div>
                 @endif
             </div>
