@@ -57,19 +57,19 @@
                             @php $logoUrl = $getLogoUrl($brand); @endphp
                             @if($logoUrl)
                                 @if($brand->url)
-                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center {{ $direction === 'static' ? 'h-10 sm:h-12 md:h-16 w-auto' : 'w-28 h-16' }}">
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center {{ $direction === 'static' ? 'h-12 sm:h-14 md:h-16 w-auto' : 'w-28 h-16' }}">
                                         <img 
                                             alt="{{ $brand->name }}" 
-                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 {{ $direction === 'static' ? 'max-w-[120px] max-h-[48px] sm:max-w-[140px] sm:max-h-[56px] md:max-w-[160px] md:max-h-[64px]' : 'max-h-full max-w-full' }}" 
                                             src="{{ $logoUrl }}"
                                             loading="lazy"
                                         >
                                     </a>
                                 @else
-                                    <div class="flex items-center justify-center {{ $direction === 'static' ? 'h-10 sm:h-12 md:h-16 w-auto' : 'w-28 h-16' }}">
+                                    <div class="flex items-center justify-center {{ $direction === 'static' ? 'h-12 sm:h-14 md:h-16 w-auto' : 'w-28 h-16' }}">
                                         <img 
                                             alt="{{ $brand->name }}" 
-                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 {{ $direction === 'static' ? 'max-w-[120px] max-h-[48px] sm:max-w-[140px] sm:max-h-[56px] md:max-w-[160px] md:max-h-[64px]' : 'max-h-full max-w-full' }}" 
                                             src="{{ $logoUrl }}"
                                             loading="lazy"
                                         >
@@ -79,10 +79,10 @@
                         @endforeach
                     @else
                         @foreach($defaultLogos as $logo)
-                            <div class="flex items-center justify-center {{ $direction === 'static' ? 'h-10 sm:h-12 md:h-16 w-auto' : 'w-28 h-16' }}">
+                            <div class="flex items-center justify-center {{ $direction === 'static' ? 'h-12 sm:h-14 md:h-16 w-auto' : 'w-28 h-16' }}">
                                 <img 
                                     alt="{{ $logo['name'] }}" 
-                                    class="{{ $logo['height'] }} {{ $direction === 'static' ? 'sm:h-8 md:h-10' : '' }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                    class="{{ $logo['height'] }} {{ $direction === 'static' ? 'sm:h-8 md:h-10 max-w-[120px] max-h-[48px] sm:max-w-[140px] sm:max-h-[56px] md:max-w-[160px] md:max-h-[64px]' : '' }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                     src="{{ $logo['url'] }}"
                                     loading="lazy"
                                 >
