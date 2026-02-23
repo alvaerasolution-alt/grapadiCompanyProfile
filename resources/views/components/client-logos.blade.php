@@ -56,21 +56,23 @@
                     @php $logoUrl = $getLogoUrl($brand); @endphp
                     @if($logoUrl)
                         @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-2 h-16 md:h-20">
+                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden" style="height:70px;width:100%;">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain max-h-full max-w-full" 
+                                    class="object-contain" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
+                                    style="max-width:100%;max-height:60px;"
                                 >
                             </a>
                         @else
-                            <div class="flex items-center justify-center p-2 h-16 md:h-20">
+                            <div class="flex items-center justify-center overflow-hidden" style="height:70px;width:100%;">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain max-h-full max-w-full" 
+                                    class="object-contain" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
+                                    style="max-width:100%;max-height:60px;"
                                 >
                             </div>
                         @endif
@@ -78,12 +80,13 @@
                 @endforeach
             @else
                 @foreach($defaultLogos as $logo)
-                    <div class="flex items-center justify-center p-2 h-16 md:h-20">
+                    <div class="flex items-center justify-center overflow-hidden" style="height:70px;width:100%;">
                         <img 
                             alt="{{ $logo['name'] }}" 
-                            class="object-contain max-h-full max-w-full" 
+                            class="object-contain" 
                             src="{{ $logo['url'] }}"
                             loading="lazy"
+                            style="max-width:100%;max-height:60px;"
                         >
                     </div>
                 @endforeach
