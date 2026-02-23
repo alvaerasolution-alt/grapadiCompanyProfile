@@ -9,18 +9,18 @@
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 32px 32px;"></div>
         <div class="relative z-10 max-w-4xl flex flex-col gap-4 sm:gap-6 items-center" data-animate="fade-in-up">
             <h1 class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                Strategic Intelligence for
-                <span class="text-gray-300">Global Markets</span>
+                {{ $heroSection['subtitle'] }}
+                <span class="text-gray-300">{{ $heroSection['highlight'] }}</span>
             </h1>
             <p class="text-gray-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
-                Data-driven insights that empower executive decision-making and drive sustainable growth in an evolving landscape.
+                {{ $heroSection['description'] }}
             </p>
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 justify-center w-full sm:w-auto">
-                <a class="flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-white text-navy-brand hover:bg-gray-100 transition-colors text-base font-bold" href="#services">
-                    View Services
+                <a class="flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-white text-navy-brand hover:bg-gray-100 transition-colors text-base font-bold" href="{{ $heroSection['primary_url'] }}">
+                    {{ $heroSection['primary_text'] }}
                 </a>
-                <a class="flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-transparent border border-white/30 text-white hover:bg-white/10 transition-colors text-base font-bold" href="/contact">
-                    Request Proposal
+                <a class="flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-transparent border border-white/30 text-white hover:bg-white/10 transition-colors text-base font-bold" href="{{ $heroSection['secondary_url'] }}">
+                    {{ $heroSection['secondary_text'] }}
                 </a>
             </div>
         </div>
@@ -29,9 +29,9 @@
     {{-- Expertise Headline --}}
     <section class="bg-white dark:bg-background-dark py-16 px-6 md:px-10 lg:px-40">
         <div class="max-w-[960px] mx-auto text-center">
-            <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block" data-animate="fade-in-up">Our Expertise</span>
+            <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block" data-animate="fade-in-up">{{ $expertiseSection['tagline'] }}</span>
             <h2 class="text-gray-900 dark:text-white text-3xl md:text-4xl font-bold leading-tight" data-animate="fade-in-up" data-delay="100">
-                Comprehensive solutions tailored to your unique business challenges
+                {{ $expertiseSection['headline'] }}
             </h2>
         </div>
     </section>
@@ -178,10 +178,10 @@
     <section class="bg-white dark:bg-background-dark py-20 px-6 md:px-10 lg:px-40 border-t border-gray-100 dark:border-gray-800">
         <div class="max-w-[1200px] mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4" data-animate="fade-in-up">
-                Integrated Strategy Platform & Decision Dashboard
+                {{ $dashboardSection['title'] }}
             </h2>
             <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-animate="fade-in-up" data-delay="100">
-                Platform terintegrasi untuk memantau kinerja bisnis dan mengambil keputusan strategis
+                {{ $dashboardSection['description'] }}
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -277,10 +277,10 @@
 
     {{-- CTA Section --}}
     <x-cta-section 
-        title="Ready to elevate your strategy?"
-        description="Schedule a consultation with our senior partners to discuss your specific needs and how we can help you achieve your goals."
-        primaryText="Request a Proposal"
-        primaryUrl="/contact"
+        title="{{ $ctaSection['title'] }}"
+        description="{{ $ctaSection['description'] }}"
+        primaryText="{{ $ctaSection['primary_text'] }}"
+        primaryUrl="{{ $ctaSection['primary_url'] }}"
         background="white"
     />
 @endsection

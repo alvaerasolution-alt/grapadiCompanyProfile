@@ -145,6 +145,30 @@ class ManageSiteSettings extends Page implements HasForms
             'about_solutions_description' => SiteSetting::get('about_solutions_description', 'Di Grapadi International, kami menyediakan layanan konsultasi bisnis yang komprehensif untuk menjawab kebutuhan perusahaan di pasar nasional maupun internasional. Layanan kami mencakup perencanaan strategis, analisis investasi, pengembangan bisnis, hingga implementasi solusi yang berorientasi pada hasil, keberlanjutan, dan penciptaan nilai jangka panjang.'),
             'about_solutions_items' => $this->decodeJsonItems(SiteSetting::get('about_solutions_items', null), 'solutions'),
 
+            // Services Page - Hero Section
+            'svc_hero_title' => SiteSetting::get('svc_hero_title', 'Strategic Intelligence for Global Markets'),
+            'svc_hero_subtitle' => SiteSetting::get('svc_hero_subtitle', 'Strategic Intelligence for'),
+            'svc_hero_highlight' => SiteSetting::get('svc_hero_highlight', 'Global Markets'),
+            'svc_hero_description' => SiteSetting::get('svc_hero_description', 'Data-driven insights that empower executive decision-making and drive sustainable growth in an evolving landscape.'),
+            'svc_hero_primary_text' => SiteSetting::get('svc_hero_primary_text', 'View Services'),
+            'svc_hero_primary_url' => SiteSetting::get('svc_hero_primary_url', '#services'),
+            'svc_hero_secondary_text' => SiteSetting::get('svc_hero_secondary_text', 'Request Proposal'),
+            'svc_hero_secondary_url' => SiteSetting::get('svc_hero_secondary_url', '/contact'),
+
+            // Services Page - Expertise Section
+            'svc_expertise_tagline' => SiteSetting::get('svc_expertise_tagline', 'Our Expertise'),
+            'svc_expertise_headline' => SiteSetting::get('svc_expertise_headline', 'Comprehensive solutions tailored to your unique business challenges'),
+
+            // Services Page - Dashboard Section
+            'svc_dashboard_title' => SiteSetting::get('svc_dashboard_title', 'Integrated Strategy Platform & Decision Dashboard'),
+            'svc_dashboard_description' => SiteSetting::get('svc_dashboard_description', 'Platform terintegrasi untuk memantau kinerja bisnis dan mengambil keputusan strategis'),
+
+            // Services Page - CTA Section
+            'svc_cta_title' => SiteSetting::get('svc_cta_title', 'Ready to elevate your strategy?'),
+            'svc_cta_description' => SiteSetting::get('svc_cta_description', 'Schedule a consultation with our senior partners to discuss your specific needs and how we can help you achieve your goals.'),
+            'svc_cta_primary_text' => SiteSetting::get('svc_cta_primary_text', 'Request a Proposal'),
+            'svc_cta_primary_url' => SiteSetting::get('svc_cta_primary_url', '/contact'),
+
             // Services Page - Grapadi Strategix Section
             'strategix_is_active' => SiteSetting::get('strategix_is_active', true),
             'strategix_logo' => SiteSetting::get('strategix_logo', ''),
@@ -809,6 +833,110 @@ class ManageSiteSettings extends Page implements HasForms
                         Forms\Components\Tabs\Tab::make('Services Page')
                             ->icon('heroicon-o-briefcase')
                             ->schema([
+                                // Services Hero Section
+                                Forms\Components\Section::make('Hero Section')
+                                    ->description('Pengaturan section utama di halaman Services')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('svc_hero_title')
+                                            ->label('Judul Lengkap (Untuk SEO)')
+                                            ->placeholder('Strategic Intelligence for Global Markets')
+                                            ->maxLength(255),
+                                            
+                                        Forms\Components\Grid::make(2)->schema([
+                                            Forms\Components\TextInput::make('svc_hero_subtitle')
+                                                ->label('Teks Awal')
+                                                ->placeholder('Strategic Intelligence for'),
+                                                
+                                            Forms\Components\TextInput::make('svc_hero_highlight')
+                                                ->label('Teks Sorotan (Highlight)')
+                                                ->placeholder('Global Markets'),
+                                        ]),
+
+                                        Forms\Components\Textarea::make('svc_hero_description')
+                                            ->label('Deskripsi')
+                                            ->rows(3),
+
+                                        Forms\Components\Grid::make(2)->schema([
+                                            Forms\Components\TextInput::make('svc_hero_primary_text')
+                                                ->label('Teks Tombol Primary')
+                                                ->placeholder('View Services'),
+                                            Forms\Components\TextInput::make('svc_hero_primary_url')
+                                                ->label('URL Tombol Primary')
+                                                ->placeholder('#services'),
+                                        ]),
+
+                                        Forms\Components\Grid::make(2)->schema([
+                                            Forms\Components\TextInput::make('svc_hero_secondary_text')
+                                                ->label('Teks Tombol Secondary')
+                                                ->placeholder('Request Proposal'),
+                                            Forms\Components\TextInput::make('svc_hero_secondary_url')
+                                                ->label('URL Tombol Secondary')
+                                                ->placeholder('/contact'),
+                                        ]),
+                                    ])
+                                    ->collapsible()
+                                    ->collapsed(),
+
+                                // Services Expertise Section
+                                Forms\Components\Section::make('Expertise Section')
+                                    ->description('Pengaturan headline section expertise')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('svc_expertise_tagline')
+                                            ->label('Tagline')
+                                            ->placeholder('Our Expertise')
+                                            ->maxLength(255),
+                                            
+                                        Forms\Components\Textarea::make('svc_expertise_headline')
+                                            ->label('Headline Utama')
+                                            ->placeholder('Comprehensive solutions tailored to your unique business challenges')
+                                            ->rows(2),
+                                    ])
+                                    ->collapsible()
+                                    ->collapsed(),
+
+                                // Dashboard Title Section
+                                Forms\Components\Section::make('Dashboard Title Section')
+                                    ->description('Pengaturan judul untuk section daftar dashboard')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('svc_dashboard_title')
+                                            ->label('Judul Section')
+                                            ->placeholder('Integrated Strategy Platform & Decision Dashboard')
+                                            ->maxLength(255),
+                                            
+                                        Forms\Components\Textarea::make('svc_dashboard_description')
+                                            ->label('Deskripsi Section')
+                                            ->placeholder('Platform terintegrasi untuk memantau kinerja bisnis dan mengambil keputusan strategis')
+                                            ->rows(2),
+                                    ])
+                                    ->collapsible()
+                                    ->collapsed(),
+
+                                // CTA Section
+                                Forms\Components\Section::make('Call to Action (CTA) Section')
+                                    ->description('Pengaturan section CTA di bagian bawah')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('svc_cta_title')
+                                            ->label('Judul CTA')
+                                            ->placeholder('Ready to elevate your strategy?')
+                                            ->maxLength(255),
+
+                                        Forms\Components\Textarea::make('svc_cta_description')
+                                            ->label('Deskripsi CTA')
+                                            ->rows(2),
+
+                                        Forms\Components\Grid::make(2)->schema([
+                                            Forms\Components\TextInput::make('svc_cta_primary_text')
+                                                ->label('Teks Tombol')
+                                                ->placeholder('Request a Proposal'),
+
+                                            Forms\Components\TextInput::make('svc_cta_primary_url')
+                                                ->label('URL Tombol')
+                                                ->placeholder('/contact'),
+                                        ]),
+                                    ])
+                                    ->collapsible()
+                                    ->collapsed(),
+
                                 // Grapadi Strategix Section
                                 Forms\Components\Section::make('Grapadi Strategix')
                                     ->description('Pengaturan section produk Grapadi Strategix')
@@ -1103,6 +1231,30 @@ class ManageSiteSettings extends Page implements HasForms
         SiteSetting::set('about_solutions_title', $data['about_solutions_title'], 'about_page', 'text');
         SiteSetting::set('about_solutions_description', $data['about_solutions_description'], 'about_page', 'text');
         SiteSetting::set('about_solutions_items', json_encode($data['about_solutions_items']), 'about_page', 'json');
+
+        // Services Page - Hero Section
+        SiteSetting::set('svc_hero_title', $data['svc_hero_title'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_subtitle', $data['svc_hero_subtitle'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_highlight', $data['svc_hero_highlight'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_description', $data['svc_hero_description'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_primary_text', $data['svc_hero_primary_text'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_primary_url', $data['svc_hero_primary_url'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_secondary_text', $data['svc_hero_secondary_text'], 'services_page', 'text');
+        SiteSetting::set('svc_hero_secondary_url', $data['svc_hero_secondary_url'], 'services_page', 'text');
+
+        // Services Page - Expertise Section
+        SiteSetting::set('svc_expertise_tagline', $data['svc_expertise_tagline'], 'services_page', 'text');
+        SiteSetting::set('svc_expertise_headline', $data['svc_expertise_headline'], 'services_page', 'text');
+
+        // Services Page - Dashboard Title Section
+        SiteSetting::set('svc_dashboard_title', $data['svc_dashboard_title'], 'services_page', 'text');
+        SiteSetting::set('svc_dashboard_description', $data['svc_dashboard_description'], 'services_page', 'text');
+
+        // Services Page - CTA Section
+        SiteSetting::set('svc_cta_title', $data['svc_cta_title'], 'services_page', 'text');
+        SiteSetting::set('svc_cta_description', $data['svc_cta_description'], 'services_page', 'text');
+        SiteSetting::set('svc_cta_primary_text', $data['svc_cta_primary_text'], 'services_page', 'text');
+        SiteSetting::set('svc_cta_primary_url', $data['svc_cta_primary_url'], 'services_page', 'text');
 
         // Services Page - Grapadi Strategix Section
         SiteSetting::set('strategix_is_active', $data['strategix_is_active'], 'services_page', 'boolean');

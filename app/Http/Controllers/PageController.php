@@ -301,7 +301,47 @@ public function services()
         'steps' => $steps,
     ];
 
-    return view('pages.services', compact('services', 'strategix', 'platformSteps'));
+    // Services Page - Hero Section
+    $heroSection = [
+        'title' => SiteSetting::get('svc_hero_title', 'Strategic Intelligence for Global Markets'),
+        'subtitle' => SiteSetting::get('svc_hero_subtitle', 'Strategic Intelligence for'),
+        'highlight' => SiteSetting::get('svc_hero_highlight', 'Global Markets'),
+        'description' => SiteSetting::get('svc_hero_description', 'Data-driven insights that empower executive decision-making and drive sustainable growth in an evolving landscape.'),
+        'primary_text' => SiteSetting::get('svc_hero_primary_text', 'View Services'),
+        'primary_url' => SiteSetting::get('svc_hero_primary_url', '#services'),
+        'secondary_text' => SiteSetting::get('svc_hero_secondary_text', 'Request Proposal'),
+        'secondary_url' => SiteSetting::get('svc_hero_secondary_url', '/contact'),
+    ];
+
+    // Services Page - Expertise Section
+    $expertiseSection = [
+        'tagline' => SiteSetting::get('svc_expertise_tagline', 'Our Expertise'),
+        'headline' => SiteSetting::get('svc_expertise_headline', 'Comprehensive solutions tailored to your unique business challenges'),
+    ];
+
+    // Services Page - Dashboard Title Section
+    $dashboardSection = [
+        'title' => SiteSetting::get('svc_dashboard_title', 'Integrated Strategy Platform & Decision Dashboard'),
+        'description' => SiteSetting::get('svc_dashboard_description', 'Platform terintegrasi untuk memantau kinerja bisnis dan mengambil keputusan strategis'),
+    ];
+
+    // Services Page - CTA Section
+    $ctaSection = [
+        'title' => SiteSetting::get('svc_cta_title', 'Ready to elevate your strategy?'),
+        'description' => SiteSetting::get('svc_cta_description', 'Schedule a consultation with our senior partners to discuss your specific needs and how we can help you achieve your goals.'),
+        'primary_text' => SiteSetting::get('svc_cta_primary_text', 'Request a Proposal'),
+        'primary_url' => SiteSetting::get('svc_cta_primary_url', '/contact'),
+    ];
+
+    return view('pages.services', compact(
+        'services', 
+        'strategix', 
+        'platformSteps',
+        'heroSection',
+        'expertiseSection',
+        'dashboardSection',
+        'ctaSection'
+    ));
 }
 
     /**
