@@ -48,7 +48,7 @@
     
     {{-- Row 1: Scroll Left --}}
     <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }} mb-4">
-        <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center gap-8 sm:gap-12 md:gap-16 px-4 items-center' : 'animate-scroll' }}">
+        <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 items-center' : 'animate-scroll' }}">
             {{-- First set --}}
             <div class="{{ $direction === 'static' ? 'contents' : 'flex items-center gap-16 px-8 shrink-0' }}">
                 @for ($i = 0; $i < $repeatCount; $i++)
@@ -57,21 +57,23 @@
                             @php $logoUrl = $getLogoUrl($brand); @endphp
                             @if($logoUrl)
                                 @if($brand->url)
-                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center {{ $direction === 'static' ? 'h-12 sm:h-14 md:h-16 w-auto' : 'w-28 h-16' }}">
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center" style="width:120px;height:50px;">
                                         <img 
                                             alt="{{ $brand->name }}" 
-                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 {{ $direction === 'static' ? 'max-w-[120px] max-h-[48px] sm:max-w-[140px] sm:max-h-[56px] md:max-w-[160px] md:max-h-[64px]' : 'max-h-full max-w-full' }}" 
+                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
                                             loading="lazy"
+                                            style="max-width:120px;max-height:50px;"
                                         >
                                     </a>
                                 @else
-                                    <div class="flex items-center justify-center {{ $direction === 'static' ? 'h-12 sm:h-14 md:h-16 w-auto' : 'w-28 h-16' }}">
+                                    <div class="flex items-center justify-center" style="width:120px;height:50px;">
                                         <img 
                                             alt="{{ $brand->name }}" 
-                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 {{ $direction === 'static' ? 'max-w-[120px] max-h-[48px] sm:max-w-[140px] sm:max-h-[56px] md:max-w-[160px] md:max-h-[64px]' : 'max-h-full max-w-full' }}" 
+                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
                                             loading="lazy"
+                                            style="max-width:120px;max-height:50px;"
                                         >
                                     </div>
                                 @endif
@@ -79,12 +81,13 @@
                         @endforeach
                     @else
                         @foreach($defaultLogos as $logo)
-                            <div class="flex items-center justify-center {{ $direction === 'static' ? 'h-12 sm:h-14 md:h-16 w-auto' : 'w-28 h-16' }}">
+                            <div class="flex items-center justify-center" style="width:120px;height:50px;">
                                 <img 
                                     alt="{{ $logo['name'] }}" 
-                                    class="{{ $logo['height'] }} {{ $direction === 'static' ? 'sm:h-8 md:h-10 max-w-[120px] max-h-[48px] sm:max-w-[140px] sm:max-h-[56px] md:max-w-[160px] md:max-h-[64px]' : '' }} object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                    class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                     src="{{ $logo['url'] }}"
                                     loading="lazy"
+                                    style="max-width:120px;max-height:50px;"
                                 >
                             </div>
                         @endforeach
