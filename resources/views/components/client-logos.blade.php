@@ -56,23 +56,23 @@
                     @php $logoUrl = $getLogoUrl($brand); @endphp
                     @if($logoUrl)
                         @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3" style="height:80px;">
+                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg" style="aspect-ratio:1;">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain opacity-60 grayscale" 
+                                    class="object-contain" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
-                                    style="max-width:100%;max-height:60px;"
+                                    style="max-width:80%;max-height:80%;"
                                 >
                             </a>
                         @else
-                            <div class="flex items-center justify-center p-3" style="height:80px;">
+                            <div class="flex items-center justify-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg" style="aspect-ratio:1;">
                                 <img 
                                     alt="{{ $brand->name }}" 
-                                    class="object-contain opacity-60 grayscale" 
+                                    class="object-contain" 
                                     src="{{ $logoUrl }}"
                                     loading="lazy"
-                                    style="max-width:100%;max-height:60px;"
+                                    style="max-width:80%;max-height:80%;"
                                 >
                             </div>
                         @endif
@@ -80,13 +80,13 @@
                 @endforeach
             @else
                 @foreach($defaultLogos as $logo)
-                    <div class="flex items-center justify-center p-3" style="height:80px;">
+                    <div class="flex items-center justify-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg" style="aspect-ratio:1;">
                         <img 
                             alt="{{ $logo['name'] }}" 
-                            class="object-contain opacity-60 grayscale" 
+                            class="object-contain" 
                             src="{{ $logo['url'] }}"
                             loading="lazy"
-                            style="max-width:100%;max-height:60px;"
+                            style="max-width:80%;max-height:80%;"
                         >
                     </div>
                 @endforeach
