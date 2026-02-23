@@ -48,32 +48,76 @@
     
     {{-- Row 1: Scroll Left --}}
     <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }} mb-4">
-        <div class="flex {{ $direction === 'static' ? 'flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 items-center' : 'animate-scroll' }}">
+        @if($direction === 'static')
+        {{-- Static Grid Layout: 2 cols mobile, 3 sm, 4 md, 6 lg --}}
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8 px-4 sm:px-8 md:px-16 max-w-6xl mx-auto">
+            @if($hasBrands)
+                @foreach($brands as $brand)
+                    @php $logoUrl = $getLogoUrl($brand); @endphp
+                    @if($logoUrl)
+                        @if($brand->url)
+                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-3" style="height:80px;">
+                                <img 
+                                    alt="{{ $brand->name }}" 
+                                    class="object-contain opacity-60 grayscale" 
+                                    src="{{ $logoUrl }}"
+                                    loading="lazy"
+                                    style="max-width:100%;max-height:60px;"
+                                >
+                            </a>
+                        @else
+                            <div class="flex items-center justify-center p-3" style="height:80px;">
+                                <img 
+                                    alt="{{ $brand->name }}" 
+                                    class="object-contain opacity-60 grayscale" 
+                                    src="{{ $logoUrl }}"
+                                    loading="lazy"
+                                    style="max-width:100%;max-height:60px;"
+                                >
+                            </div>
+                        @endif
+                    @endif
+                @endforeach
+            @else
+                @foreach($defaultLogos as $logo)
+                    <div class="flex items-center justify-center p-3" style="height:80px;">
+                        <img 
+                            alt="{{ $logo['name'] }}" 
+                            class="object-contain opacity-60 grayscale" 
+                            src="{{ $logo['url'] }}"
+                            loading="lazy"
+                            style="max-width:100%;max-height:60px;"
+                        >
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        @else
+        {{-- Scrolling Layout --}}
+        <div class="flex animate-scroll">
             {{-- First set --}}
-            <div class="{{ $direction === 'static' ? 'contents' : 'flex items-center gap-16 px-8 shrink-0' }}">
+            <div class="flex items-center gap-16 px-8 shrink-0">
                 @for ($i = 0; $i < $repeatCount; $i++)
                     @if($hasBrands)
                         @foreach($brands as $brand)
                             @php $logoUrl = $getLogoUrl($brand); @endphp
                             @if($logoUrl)
                                 @if($brand->url)
-                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center" style="width:120px;height:50px;">
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-28 h-16">
                                         <img 
                                             alt="{{ $brand->name }}" 
-                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
                                             loading="lazy"
-                                            style="max-width:120px;max-height:50px;"
                                         >
                                     </a>
                                 @else
-                                    <div class="flex items-center justify-center" style="width:120px;height:50px;">
+                                    <div class="flex items-center justify-center w-28 h-16">
                                         <img 
                                             alt="{{ $brand->name }}" 
-                                            class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                            class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                             src="{{ $logoUrl }}"
                                             loading="lazy"
-                                            style="max-width:120px;max-height:50px;"
                                         >
                                     </div>
                                 @endif
@@ -81,13 +125,12 @@
                         @endforeach
                     @else
                         @foreach($defaultLogos as $logo)
-                            <div class="flex items-center justify-center" style="width:120px;height:50px;">
+                            <div class="flex items-center justify-center w-28 h-16">
                                 <img 
                                     alt="{{ $logo['name'] }}" 
-                                    class="object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                                    class="max-h-full max-w-full object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
                                     src="{{ $logo['url'] }}"
                                     loading="lazy"
-                                    style="max-width:120px;max-height:50px;"
                                 >
                             </div>
                         @endforeach
