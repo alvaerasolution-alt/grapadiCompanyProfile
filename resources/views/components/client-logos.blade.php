@@ -4,6 +4,12 @@
     'direction' => 'left',
     'speed' => 5,
     'rows' => 1,
+    'showCard' => false,
+    'cardNumber' => '100++',
+    'cardTitle' => 'Trusted Clients',
+    'cardDescription' => 'Lebih dari 100 perusahaan dan institusi publik telah mempercayakan strategi dan transformasi bisnisnya kepada kami.',
+    'cardCtaText' => "Let's Work Together",
+    'cardCtaUrl' => '/contact',
 ])
 
 @php
@@ -34,12 +40,17 @@
         }
         return null;
     };
+
+    // Determine grid columns based on whether card is shown
+    $gridCols = $showCard ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6';
 @endphp
 
 <div class="bg-white dark:bg-surface-dark py-12 border-b border-gray-200 dark:border-gray-800 overflow-hidden relative">
-    {{-- Gradient Overlays --}}
+    {{-- Gradient Overlays (only on left side when card is shown) --}}
     <div class="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-white via-white/90 to-transparent dark:from-surface-dark dark:via-surface-dark/90 dark:to-transparent z-10 pointer-events-none"></div>
+    @if(!$showCard)
     <div class="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-white via-white/90 to-transparent dark:from-surface-dark dark:via-surface-dark/90 dark:to-transparent z-10 pointer-events-none"></div>
+    @endif
 
     {{-- Title --}}
     @if($title)
@@ -49,47 +60,79 @@
     {{-- Row 1: Scroll Left --}}
     <div class="relative {{ $direction === 'static' ? '' : 'overflow-hidden' }} mb-4">
         @if($direction === 'static')
-        {{-- Static Grid Layout: 2 cols mobile, 3 sm, 6 lg+ --}}
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-10 px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto">
-            @if($hasBrands)
-                @foreach($brands as $brand)
-                    @php $logoUrl = $getLogoUrl($brand); @endphp
-                    @if($logoUrl)
-                        @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3" style="height:70px;width:100%;">
+        {{-- Static Layout with optional card --}}
+        <div class="flex flex-col lg:flex-row gap-8 px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto">
+            {{-- Logos Grid --}}
+            <div class="{{ $showCard ? 'lg:w-[65%]' : 'w-full' }}">
+                <div class="grid {{ $gridCols }} gap-6 sm:gap-8 lg:gap-10">
+                    @if($hasBrands)
+                        @foreach($brands as $brand)
+                            @php $logoUrl = $getLogoUrl($brand); @endphp
+                            @if($logoUrl)
+                                @if($brand->url)
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:70px;width:100%;">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
+                                            src="{{ $logoUrl }}"
+                                            loading="lazy"
+                                            style="max-width:100%;max-height:54px;"
+                                        >
+                                    </a>
+                                @else
+                                    <div class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:70px;width:100%;">
+                                        <img 
+                                            alt="{{ $brand->name }}" 
+                                            class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
+                                            src="{{ $logoUrl }}"
+                                            loading="lazy"
+                                            style="max-width:100%;max-height:54px;"
+                                        >
+                                    </div>
+                                @endif
+                            @endif
+                        @endforeach
+                    @else
+                        @foreach($defaultLogos as $logo)
+                            <div class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:70px;width:100%;">
                                 <img 
-                                    alt="{{ $brand->name }}" 
+                                    alt="{{ $logo['name'] }}" 
                                     class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
-                                    src="{{ $logoUrl }}"
-                                    loading="lazy"
-                                    style="max-width:100%;max-height:54px;"
-                                >
-                            </a>
-                        @else
-                            <div class="flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3" style="height:70px;width:100%;">
-                                <img 
-                                    alt="{{ $brand->name }}" 
-                                    class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
-                                    src="{{ $logoUrl }}"
+                                    src="{{ $logo['url'] }}"
                                     loading="lazy"
                                     style="max-width:100%;max-height:54px;"
                                 >
                             </div>
-                        @endif
+                        @endforeach
                     @endif
-                @endforeach
-            @else
-                @foreach($defaultLogos as $logo)
-                    <div class="flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3" style="height:70px;width:100%;">
-                        <img 
-                            alt="{{ $logo['name'] }}" 
-                            class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
-                            src="{{ $logo['url'] }}"
-                            loading="lazy"
-                            style="max-width:100%;max-height:54px;"
-                        >
-                    </div>
-                @endforeach
+                </div>
+            </div>
+
+            {{-- Stats Card (right side) --}}
+            @if($showCard)
+            <div class="lg:w-[35%] flex items-stretch">
+                <div class="w-full bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex flex-col justify-center shadow-sm border border-gray-100 dark:border-gray-600">
+                    {{-- Number --}}
+                    <p class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-2">
+                        {{ $cardNumber }}
+                    </p>
+                    {{-- Title --}}
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                        {{ $cardTitle }}
+                    </h3>
+                    {{-- Description --}}
+                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6" style="text-align: justify;">
+                        {{ $cardDescription }}
+                    </p>
+                    {{-- CTA Link --}}
+                    <a href="{{ $cardCtaUrl }}" class="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group">
+                        {{ $cardCtaText }}
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
             @endif
         </div>
         @else

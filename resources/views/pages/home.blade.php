@@ -116,7 +116,17 @@
     @endif
 
     {{-- Client Logos --}}
-    <x-client-logos title="Trusted By" :brands="$trustedBrands" direction="static" />
+    <x-client-logos 
+        title="Trusted By" 
+        :brands="$trustedBrands" 
+        direction="static" 
+        :showCard="true"
+        cardNumber="100++"
+        cardTitle="Trusted Clients"
+        cardDescription="Lebih dari 100 perusahaan dan institusi publik telah mempercayakan strategi dan transformasi bisnisnya kepada Grapadi Konsultan."
+        cardCtaText="Let's Work Together"
+        cardCtaUrl="/contact"
+    />
     <x-client-logos title="Media Covered" :brands="$mediaBrands" direction="static" />
     
     {{-- Quote Section --}}
