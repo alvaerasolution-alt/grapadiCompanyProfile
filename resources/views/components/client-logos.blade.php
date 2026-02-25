@@ -64,13 +64,13 @@
         <div class="flex flex-col lg:flex-row gap-8 px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto">
             {{-- Logos Grid --}}
             <div class="{{ $showCard ? 'lg:w-[65%]' : 'w-full' }}">
-                <div class="grid {{ $gridCols }} gap-6 sm:gap-8 lg:gap-10">
+                <div class="{{ $showCard ? 'grid ' . $gridCols . ' gap-6 sm:gap-8 lg:gap-10' : 'flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10' }}">
                     @if($hasBrands)
                         @foreach($brands as $brand)
                             @php $logoUrl = $getLogoUrl($brand); @endphp
                             @if($logoUrl)
                                 @if($brand->url)
-                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:90px;width:100%;">
+                                    <a href="{{ $brand->url }}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:90px;{{ $showCard ? 'width:100%' : 'width:130px' }};">
                                         <img 
                                             alt="{{ $brand->name }}" 
                                             class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
@@ -80,7 +80,7 @@
                                         >
                                     </a>
                                 @else
-                                    <div class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:90px;width:100%;">
+                                    <div class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:90px;{{ $showCard ? 'width:100%' : 'width:130px' }};">
                                         <img 
                                             alt="{{ $brand->name }}" 
                                             class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 
@@ -94,7 +94,7 @@
                         @endforeach
                     @else
                         @foreach($defaultLogos as $logo)
-                            <div class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:90px;width:100%;">
+                            <div class="flex items-center justify-center overflow-hidden dark:bg-gray-800/50 rounded-lg p-3" style="height:90px;{{ $showCard ? 'width:100%' : 'width:130px' }};">
                                 <img 
                                     alt="{{ $logo['name'] }}" 
                                     class="object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" 

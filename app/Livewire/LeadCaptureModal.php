@@ -12,11 +12,16 @@ class LeadCaptureModal extends Component
     public string $whatsapp = '';
     public string $company = '';
     
-    // WhatsApp settings - can be configured
-    public string $adminWhatsapp = '6281234567890'; // Admin WA number
+    // WhatsApp settings - loaded from site settings
+    public string $adminWhatsapp = '';
     public string $defaultMessage = 'Halo, saya tertarik dengan layanan Grapadi. Mohon informasi lebih lanjut.';
     
     protected $listeners = ['openLeadModal' => 'open'];
+
+    public function mount(): void
+    {
+        $this->adminWhatsapp = site_setting('site_whatsapp', '6281234567890');
+    }
 
     protected function rules(): array
     {
