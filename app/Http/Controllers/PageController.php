@@ -18,8 +18,6 @@ class PageController extends Controller
      */
     public function home()
     {
-        // Load all settings in a single query to avoid N+1
-        SiteSetting::loadAll();
 
         $services = Service::orderBy('service_name')->take(6)->get();
         $articles = Article::with(['category', 'author'])
@@ -136,8 +134,6 @@ class PageController extends Controller
      */
     public function about()
     {
-        // Load all settings in a single query to avoid N+1
-        SiteSetting::loadAll();
 
         $executiveTeam = ExecutiveTeam::orderBy('id')->get();
 
@@ -278,8 +274,6 @@ class PageController extends Controller
  */
 public function services()
 {
-    // Load all settings in a single query to avoid N+1
-    SiteSetting::loadAll();
 
     $services = Service::orderBy('service_name')->get();
 
