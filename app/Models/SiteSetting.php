@@ -21,10 +21,44 @@ class SiteSetting extends Model
     private const CACHE_TTL = 86400; // 24 hours
 
     /**
+     * In-memory cache for batch-loaded settings
+     */
+    private static array $allSettingsCache = [];
+
+    /**
      * Get a setting value by key
      */
+    /**
+     * Load all settings in a single query and cache in memory.
+     * Call this once at the start of a request to avoid N+1 queries.
+     */
+    public static function loadAll(): void
+    {
+        if (!empty(self::$allSettingsCache)) {
+            return;
+        }
+
+        $cacheKey = self::CACHE_PREFIX . 'all';
+
+        self::$allSettingsCache = Cache::remember($cacheKey, self::CACHE_TTL, function () {
+            $settings = self::all();
+            $result = [];
+            foreach ($settings as $setting) {
+                $result[$setting->key] = self::castValue($setting->value, $setting->type);
+            }
+            return $result;
+        });
+    }
+
     public static function get(string $key, mixed $default = null): mixed
     {
+        // Check in-memory cache first (populated by loadAll)
+        if (!empty(self::$allSettingsCache)) {
+            return array_key_exists($key, self::$allSettingsCache)
+                ? self::$allSettingsCache[$key]
+                : $default;
+        }
+
         $cacheKey = self::CACHE_PREFIX . $key;
 
         return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($key, $default) {
@@ -88,6 +122,9 @@ class SiteSetting extends Model
      */
     public static function clearCache(): void
     {
+        self::$allSettingsCache = [];
+        Cache::forget(self::CACHE_PREFIX . 'all');
+
         $settings = self::all();
         foreach ($settings as $setting) {
             Cache::forget(self::CACHE_PREFIX . $setting->key);

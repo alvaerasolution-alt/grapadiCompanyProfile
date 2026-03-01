@@ -18,6 +18,9 @@ class PageController extends Controller
      */
     public function home()
     {
+        // Load all settings in a single query to avoid N+1
+        SiteSetting::loadAll();
+
         $services = Service::orderBy('service_name')->take(6)->get();
         $articles = Article::with(['category', 'author'])
             ->orderBy('created_at', 'desc')
@@ -25,9 +28,10 @@ class PageController extends Controller
             ->get();
         $executiveTeam = ExecutiveTeam::orderBy('id')->first();
         
-        // Get brands for client logos section
-        $trustedBrands = Brand::active()->trusted()->ordered()->get();
-        $mediaBrands = Brand::active()->media()->ordered()->get();
+        // Single query for all brands, split by type in PHP
+        $allBrands = Brand::active()->ordered()->get();
+        $trustedBrands = $allBrands->where('type', Brand::TYPE_TRUSTED)->values();
+        $mediaBrands = $allBrands->where('type', Brand::TYPE_MEDIA)->values();
 
         // Get Software Bisnis Plan settings
         $softwareBisnisPlan = [
@@ -132,6 +136,9 @@ class PageController extends Controller
      */
     public function about()
     {
+        // Load all settings in a single query to avoid N+1
+        SiteSetting::loadAll();
+
         $executiveTeam = ExecutiveTeam::orderBy('id')->get();
 
         // Get About Page - Hero Section settings
@@ -271,6 +278,9 @@ class PageController extends Controller
  */
 public function services()
 {
+    // Load all settings in a single query to avoid N+1
+    SiteSetting::loadAll();
+
     $services = Service::orderBy('service_name')->get();
 
     // Grapadi Strategix Section
